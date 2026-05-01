@@ -1,10 +1,10 @@
-
+import Navbar from "./src/components/Navbar"
 
 
 
 function App () {
     return (
-        <p>This is the initial commit</p>
+        <Navbar/>
     )
 }
 
