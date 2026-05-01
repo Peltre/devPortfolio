@@ -8,9 +8,12 @@ function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 flex items-center justify-between px-8 h-16 bg-neutral-950/80 backdrop-blur-md border-b border-white/8">
-            <span className="text-sm tracking-wideset text-neutral-100">
+            <a
+                className="text-sm tracking-wideset text-neutral-100"
+                href="/"
+            >
                 Pedro.portfolio
-            </span>
+            </a>
             <div className="flex items-center gap-8">
                 {[
                     { label: 'Sobre mi', id : 'sobre-mi'},
