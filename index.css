@@ -7,9 +7,39 @@
 body {
     background: #0a0a0a;
     color: #e8e8e8;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
 }
+
+@layer components {
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 9999px;
+        border: 0.5px solid rgba(255,255,255,0.1);
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.4);
+        transition: all 0.2s;   
+    }
+
+    .social-btn:hover {
+        color: rgba(255, 255, 255, 1);
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .emerald-grad {
+        background: linear-gradient(135deg, #6ee7b7, #059669);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+    }
+}
+
