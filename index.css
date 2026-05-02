@@ -33,5 +33,13 @@ html {
         border-color: rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.1);
     }
+
+    .emerald-grad {
+        background: linear-gradient(135deg, #6ee7b7, #059669);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+    }
 }
 
