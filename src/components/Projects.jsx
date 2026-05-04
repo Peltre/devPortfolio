@@ -3,7 +3,7 @@ import { projects } from "../data/projects"
 
 function ProjectCard({ title, date, role, description, image, github, demo, tags }) {
     return (
-        <div className="group relative flex flex-col rounded-2xl border border-white/8 bg/white/[0.02] overflow-hidden hover:border-emerald-400/30 transition-all duration-300">
+        <div className="group relative flex flex-col rounded-2xl border border-white/8 bg/white/[0.02] overflow-hidden hover:border-emerald-400/30 transition-all duration-300 hover:cursor-pointer">
             {/* Image part */}
             <div className="relative h-56 overflow-hidden">
                 <img
@@ -36,29 +36,6 @@ function ProjectCard({ title, date, role, description, image, github, demo, tags
                 <p className="text-xs text-emerald-400/70 tracking-widest uppercase font-mono">{role}</p>
                 {/* description */}
                 <p className="text-sm text-white/40 leading-relaxed">{description}</p>
-                {/* links */}
-                <div className="flex gap-3 mt-2">
-                    {github && (
-                        <a
-                        href={github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs tracking-widest uppercase text-white/30 border border-white/10 px-4 py1.5 rounded hover:text-white hover:border-white/30 transition-colors duration-200"
-                        >
-                            GitHub
-                        </a>
-                    )}
-                    {demo && (
-                        <a
-                        href={demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs tracking-widest uppercase text-white/30 border border-white/10 px-4 py1.5 rounded hover:text-white hover:border-white/30 transition-colors duration-200"
-                        >
-                            Demo
-                        </a>
-                    )}
-                </div>
             </div>
         </div>
     )
@@ -67,14 +44,18 @@ function ProjectCard({ title, date, role, description, image, github, demo, tags
 
 function Projects() {
     return (
-        <section id="proyectos" className="px-8 md:px-20 py-24">
+        <section id="proyectos" className="px-8 md:px-20 py-10">
             {/* Header */}
             <div className="mb-12">
-                <p className="text-xs tracking-widest uppercase text-white/20 font-mono mb-2">Projects</p>
+                <p className="text-xs tracking-widest uppercase text-white/20 font-mono mb-2"> 01 / Projects</p>
                 <h2 className="text-3xl font-light text-white/90">Things I've built</h2>
             </div>
-
-            
+            {/* Card grid */}
+            <div className="grid grid-cols-1 md:grid-cols2 lg:grid-cols-3 gap-6">
+                {projects.map(project => (
+                    <ProjectCard key={project.id} {...project} />
+                ))}
+            </div>
         </section>
     )
 }
