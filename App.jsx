@@ -1,5 +1,6 @@
 import MCover from "./src/components/MCover"
 import Navbar from "./src/components/Navbar"
+import Projects from "./src/components/Projects"
 
 
 
@@ -10,6 +11,7 @@ function App () {
             <div className="relative z-10">
                 <Navbar />
                 <MCover/>
+                <Projects />
             </div>
         </div>
     )
