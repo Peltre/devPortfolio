@@ -21,18 +21,22 @@ export const skills = [
 export const softSkills = [
     {
         name: "Problem Solving",
-        description: "Ability to analyze complex problems and develop effective solutions."
+        description: "Ability to analyze complex problems and develop effective solutions.",
+        icon: '◈'
     },
     {
         name: "Communication",
-        description: "Strong verbal and written communication skills for effective collaboration."
+        description: "Strong verbal and written communication skills for effective collaboration.",
+        icon: '✦'
     },
     {
         name: "Teamwork",
-        description: "Experience working in diverse teams and contributing to group success."
+        description: "Experience working in diverse teams and contributing to group success.",
+        icon: '⬡'
     },
     {
         name: "Adaptability",
-        description: "Ability to quickly learn new technologies and adapt to changing environments."
+        description: "Ability to quickly learn new technologies and adapt to changing environments.",
+        icon: '◎'
     }
 ]
