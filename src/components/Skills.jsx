@@ -189,7 +189,7 @@ function Skills() {
                 {/* Left side */}
                 <div className="border-r border-white/8 overflow-y-auto" style={{ maxHeight: "400px" }}>
                     <p className="text-xs tracking-widest uppercase text-white/20 font-mono px-4 py-3 border-b border-white/8">
-                        {filter === "All" ? "All skills" : filter + "s"}
+                        {filter === "All" ? "All skills" : filter}
                     </p>
                     {filteredSkills.map((s, i) => {
                         const isActive = selected === i
