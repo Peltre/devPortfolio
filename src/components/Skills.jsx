@@ -11,10 +11,22 @@ const levelLabel = (level) => {
 }
 
 const levelColor = (level) => {
-    if (level >= 80) return "bg-emerald-400/20"
-    if (level >= 60) return "bg-yellow-400/20"
-    if (level >= 40) return "bg-orange-400/20"
-    return "bg-red-400/20"
+    if (level >= 80) return "#34d399"
+    if (level >= 60) return "#60a5fa"
+    if (level >= 40) return "#a78bfa"
+    return "#f472b6"
+}
+
+const categoryColor = (cat) => {
+    const map = {
+        Language: "#a78bfa",
+        Frontend: "#60a5fa",
+        Backend: "#6ee7b7",
+        "Game Dev": "#fb923c",
+        Design: "#f472b6",
+        Tool: "#94a3b8",
+    }
+    return map[cat] || "#94a3b8"
 }
 
 function TechSkillDetail({ skill }) {
@@ -26,17 +38,17 @@ function TechSkillDetail({ skill }) {
         if (barRef.current) {
             barRef.current.style.width = `0%`
             setTimeout(() => {
-                if (barRef.current) barRef.current.style.width = skill.level + "%"  
+                if (barRef.current) barRef.current.style.width = skill.level + "%"
             }, 50)
         }
-}, [skill])
+    }, [skill])
 
     return (
         <div className="p-8 flex flex-col justify-center h-full relative overflow-hidden">
             {/* Icon - name - badge */}
             <div className="flex items-start gap-5 mb-6 relative">
-                <div className="w-18 h-18 rounded-2xl border border-white/8 bg-white/3 flex items-center justify-center flex-shrink-0 p-3">
-                    <img src={skill.icon} alt={skill.name} className="w-11 h-11 object-contain"/>
+                <div className="w-18 h-18 rounded-2xl border border-white/8 bg-white/3 flex items-center justify-center shrink-0 p-3">
+                    <img src={skill.icon} alt={skill.name} className="w-11 h-11 object-contain" />
                 </div>
                 <div className="pt-1">
                     <p className="text-xl font-medium text-white/90 mb-2">{skill.name}</p>
@@ -64,7 +76,7 @@ function TechSkillDetail({ skill }) {
             <div className="mb-5 relative">
                 <div className="flex justify-between mb-2">
                     <p className="text-xs tracking-widest uppercase text-white/20 font-mono">Proficiency</p>
-                    <p className="text-xs font-mono font-medium" style={{ color}}>{skill.level}%</p>
+                    <p className="text-xs font-mono font-medium" style={{ color }}>{skill.level}%</p>
                 </div>
                 <div className="h-0.5 bg-white/8 rounded-full overflow-hidden">
                     <div
@@ -83,14 +95,14 @@ function TechSkillDetail({ skill }) {
             <div className="relative">
                 <p className="text-xs tracking-widest uppercase text-white/20 font-mono mb-3">Used in</p>
                 <div className="flex flex-wrap gap-2">
-                        {skill.projects.map(p => (
-                            <span
-                                key={p}
-                                className="text-xs font-mono px-3 py-1 rounded border border-white/8 bg-white/3 text-white/40"
-                            >
-                                {p}
-                            </span>
-                        ))}
+                    {skill.projects.map(p => (
+                        <span
+                            key={p}
+                            className="text-xs font-mono px-3 py-1 rounded border border-white/8 bg-white/3 text-white/40"
+                        >
+                            {p}
+                        </span>
+                    ))}
                 </div>
             </div>
         </div>
@@ -110,6 +122,21 @@ function SoftSkillCard({ name, description, icon }) {
 }
 
 function Skills() {
+    const [selected, setSelected] = useState(0)
+    const [filter, setFilter] = useState("All")
+
+    const tabs = ["All", "Language", "Framework", "Tool"]
+
+    const filteredSkills = filter === "All"
+        ? skills
+        : skills.filter(s => s.type === filter)
+
+    // reset selected when filter changes
+    const handleFilter = (tab) => {
+        setFilter(tab)
+        setSelected(0)
+    }
+
     return (
         <section id="habilidades" className="px-8 md:px-20 py-10">
             {/* Header */}
@@ -130,12 +157,74 @@ function Skills() {
             </div>
 
             {/* But its still very important */}
-            <div className="mt-4">
+            <div className="mt-4 mb-4">
                 <p className="text-emerald-400/60 font-medium">But it's still very important...</p>
             </div>
-            
+
+            <div className="flex gap-2 mb-3">
+                {tabs.map(tab => {
+                    const isActive = filter === tab
+                    return (
+                        <button
+                            key={tab}
+                            onClick={() => handleFilter(tab)}
+                            className="text-xs font-mono px-4 py-1.5 rounded-full border transition-all duration-150"
+                            style={{
+                                background: isActive ? "rgba(52,211,153,0.08)" : "transparent",
+                                borderColor: isActive ? "rgba(52,211,153,0.35)" : "rgba(255,255,255,0.08)",
+                                color: isActive ? "#34d399" : "rgba(255,255,255,0.3)",
+                            }}
+                        >
+                            {tab}
+                        </button>
+                    )
+                })}
+            </div>
+
+            {/* Tech skills SELECTOR */}
+            <div className="grid border border-white/8 rounded-2xl overflow-hidden mb-6"
+                style={{ gridTemplateColumns: "220px 1fr" }}
+            >
+
+                {/* Left side */}
+                <div className="border-r border-white/8">
+                    <p className="text-xs tracking-widest uppercase text-white/20 font-mono px-4 py-3 border-b border-white/8">
+                        {filter === "All" ? "All skills" : filter + "s"}
+                    </p>
+                    {filteredSkills.map((s, i) => {
+                        const isActive = selected === i
+                        const color = levelColor(s.level)
+                        const catColor = categoryColor(s.category)
+                        return (
+                            <button
+                                key={s.name}
+                                onClick={() => setSelected(i)}
+                                className="w-full flex items-center gap-3 px-4 py-3 border-b border-white/5 transition-all duration-150 text-left"
+                                style={{
+                                    background: isActive ? "rgba(110,231,183,0.05)" : "transparent",
+                                    borderLeft: `2px solid ${isActive ? "#6ee7b7" : "transparent"}`,
+                                }}
+                            >
+                                <img src={s.icon} alt={s.name} className="w-6 h-6 object-contain shrink-0" />
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-xs text-white/80 truncate" style={{ fontWeight: isActive ? 500 : 400 }}>
+                                        {s.name}
+                                    </p>
+                                    <p className="text-xs font-mono" style={{ color: catColor }}>{s.category}</p>
+                                </div>
+                                <div className="w-7 h-0.5 bg-white/8 rounded-full shrink-0">
+                                    <div className="h-full rounded-full" style={{ width: `${s.level}%`, background: color }} />
+                                </div>
+                            </button>
+                        )
+                    })}
+                </div>
+                {/* Right detail  */}
+                <TechSkillDetail skill={filteredSkills[selected]} />
+            </div>
+
         </section>
     )
-}   
+}
 
 export default Skills
