@@ -125,7 +125,7 @@ function Skills() {
     const [selected, setSelected] = useState(0)
     const [filter, setFilter] = useState("All")
 
-    const tabs = ["All", "Language", "Framework", "Tool"]
+    const tabs = ["All", "Languages", "Frameworks", "Tools"]
 
     const filteredSkills = filter === "All"
         ? skills
@@ -187,7 +187,7 @@ function Skills() {
             >
 
                 {/* Left side */}
-                <div className="border-r border-white/8">
+                <div className="border-r border-white/8 overflow-y-auto" style={{ maxHeight: "400px" }}>
                     <p className="text-xs tracking-widest uppercase text-white/20 font-mono px-4 py-3 border-b border-white/8">
                         {filter === "All" ? "All skills" : filter + "s"}
                     </p>
