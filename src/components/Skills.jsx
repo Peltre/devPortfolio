@@ -210,10 +210,6 @@ function Skills() {
                                     <p className="text-xs text-white/80 truncate" style={{ fontWeight: isActive ? 500 : 400 }}>
                                         {s.name}
                                     </p>
-                                    <p className="text-xs font-mono" style={{ color: catColor }}>{s.category}</p>
-                                </div>
-                                <div className="w-7 h-0.5 bg-white/8 rounded-full shrink-0">
-                                    <div className="h-full rounded-full" style={{ width: `${s.level}%`, background: color }} />
                                 </div>
                             </button>
                         )
