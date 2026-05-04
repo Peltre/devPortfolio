@@ -3,7 +3,7 @@ import foto from "../assets/foto.jpg"
 
 function MCover() {
     return (
-        <section id="cover" className="min-h-screen flex items-center px-8 md:px-20 py-20"> 
+        <section id="sobre-mi" className="min-h-screen flex items-center px-8 md:px-20 py-20"> 
             {/* Main container */}
             <div className="flex flex-col md:flex-row items-center gap-6 justify-center w-full mx-auto">
                 { /* Left side - Text  */}
