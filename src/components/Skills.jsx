@@ -85,7 +85,7 @@ function TechSkillDetail({ skill }) {
                         style={{
                             width: "0%",
                             background: color,
-                            transition: "width 0.6s cuibic-bezier(0.4,0,0.2,1)"
+                            transition: "width 0.6s cubic-bezier(0.4,0,0.2,1)"
                         }}
                     />
                 </div>
