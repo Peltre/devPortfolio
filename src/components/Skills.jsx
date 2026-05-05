@@ -146,7 +146,7 @@ function Skills() {
             </div>
 
             {/* Code isnt everything */}
-            <div className="-mt-10 mb-4">
+            <div className="-mt-10 mb-6">
                 <p className="text-emerald-400/60 font-medium">Code isn't everything...</p>
             </div>
 
@@ -157,7 +157,7 @@ function Skills() {
             </div>
 
             {/* But its still very important */}
-            <div className="mt-4 mb-4">
+            <div className="mt-10 mb-6">
                 <p className="text-emerald-400/60 font-medium">But it's still very important...</p>
             </div>
 
