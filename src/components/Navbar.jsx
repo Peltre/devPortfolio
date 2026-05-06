@@ -1,24 +1,32 @@
 import { Link } from "react-router-dom"
 
 function Navbar() {
+
     const handleScroll = (e, id) => {
         e.preventDefault()
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     }
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between px-8 h-16 bg-neutral-950/80 backdrop-blur-md border-b border-white/8">
+        <nav
+            className="sticky top-0 z-50 flex items-center justify-between px-8 h-16 bg-neutral-950/80 backdrop-blur-md border-b border-white/8"
+            style={{
+                background: "rgba(3,7,18,0.9)",
+                borderColor: "rgba(52,211,153,0.15)",
+                boxShadow: "0 1px 40px rgba(52,211,153,0.04)"
+            }}
+        >
             <a
                 className="text-sm tracking-wideset text-neutral-100"
                 href="/"
             >
-                Pedro.portfolio
+                Pedro<span className="text-emerald-400">.</span>dev
             </a>
             <div className="flex items-center gap-8">
                 {[
-                    { label: 'Sobre mi', id: 'sobre-mi' },
-                    { label: 'Habilidades', id: 'habilidades' },
-                    { label: 'Proyectos', id: 'proyectos' },
+                    { label: 'About me', id: 'sobre-mi' },
+                    { label: 'Skills', id: 'habilidades' },
+                    { label: 'Projects', id: 'proyectos' },
                 ].map(({ label, id }) => (
                     <a
                         key={id}
@@ -33,6 +41,11 @@ function Navbar() {
                 <a
                     href="/blog"
                     className="text-xs tracking-widest uppercase text-neutral-100 px-4 py-1.5 rounded border border-white/15 bg-white/5 hover:bg-white/10 transition-colors duration-200"
+                    style={{
+                        color: "#34d399",
+                        borderColor: "rgba(52,211,153,0.3)",
+                        background: "rgba(52,211,153,0.06)"
+                    }}
                 >
                     Blog
                 </a>
