@@ -1,9 +1,9 @@
-import  { FaGithub, FaLinkedin, FaXTwitter, FaItchIo } from "react-icons/fa6"
+import { FaGithub, FaLinkedin, FaXTwitter, FaItchIo } from "react-icons/fa6"
 import foto from "../assets/foto.jpg"
 
 function MCover() {
     return (
-        <section id="sobre-mi" className="min-h-screen flex items-center px-8 md:px-20 py-20"> 
+        <section id="sobre-mi" className="min-h-screen flex items-center px-8 md:px-20 py-10">
             {/* Main container */}
             <div className="flex flex-col md:flex-row items-center gap-6 justify-center w-full mx-auto">
                 { /* Left side - Text  */}
@@ -11,7 +11,7 @@ function MCover() {
                     <p className="text-white/30 text-md tracking-widest uppercase mb-4">
                         AVAILABLE TO WORK
                     </p>
-                     <h1 className="text-4xl leading-tight mb-1">
+                    <h1 className="text-4xl leading-tight mb-1">
                         Hello, my name is <br />
                         <span className="text-5xl font-bold emerald-grad mb-3">
                             Pedro
@@ -37,7 +37,7 @@ function MCover() {
 
                     {/* Buttons */}
                     <div className="flex gap-4 pb-3">
-                        <a 
+                        <a
                             className="social-btn"
                             href="https://github.com/Peltre"
                             target="_blank"
@@ -46,7 +46,7 @@ function MCover() {
                         >
                             <FaGithub />
                         </a>
-                        <a 
+                        <a
                             className="social-btn"
                             href="https://www.linkedin.com/in/pedroj-sotelo-arcee"
                             target="_blank"
@@ -55,7 +55,7 @@ function MCover() {
                         >
                             <FaLinkedin />
                         </a>
-                        <a 
+                        <a
                             className="social-btn"
                             href="https://x.com/dakkardd"
                             target="_blank"
@@ -64,7 +64,7 @@ function MCover() {
                         >
                             <FaXTwitter />
                         </a>
-                        <a 
+                        <a
                             className="social-btn"
                             href="https://pedr1p.itch.io/"
                             target="_blank"
