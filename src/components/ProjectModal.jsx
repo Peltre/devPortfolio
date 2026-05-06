@@ -45,7 +45,7 @@ function ProjectModal({ project, onClose }) {
                 <div className="relative h-72 bg-neutral-900 overflow-hidden">
                     <img
                         src={project.images[currentImage]}
-                        alt={`${prokect.title} - ${currentImage + 1}`}
+                        alt={`${project.title} - ${currentImage + 1}`}
                         className="w-full h-full object-cover"
                     />
                     {/* Overlay */}
@@ -86,39 +86,37 @@ function ProjectModal({ project, onClose }) {
                             ))}
                         </div>
                     )}
-
-                    {/* Project information */}
-                    <div className="p-6">
-                        <div className="flex items-start justify-between gap-4 mb-3">
-                            <h2 className="text-xl font-medium text-white/90 mb-1">{project.title}</h2>
-                            <p className="text-xs text-emerald-400/70 tracking-widest uppercase font-mono">{project.role} · {project.date}</p>
-                        </div>
-
-                        {/* Links */}
-                        <div className="flex gap-2 shrink-0">
-                            {project.github && (
-                                <a
-                                    href={project.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-xs tracking-widest uppercase px-4 py-2 border border-white/10 text-white/40 rounded-lg hover:text-white hover:border-white/30 transition-all"
-                                >
-                                    <FaGithub size={16} />
-                                </a>
-                            )}
-                            {project.demo && (
-                                <a
-                                    href={project.demo}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-xs tracking-widest uppercase px-4 py-2 border border-white/10 text-white/40 rounded-lg hover:text-white hover:border-white/30 transition-all"
-                                >
-                                    <ExternalLink size={16} />
-                                </a>
-                            )}
-                        </div>
+                </div>
+                {/* Project information */}
+                <div className="p-6">
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                        <h2 className="text-xl font-medium text-white/90 mb-1">{project.title}</h2>
+                        <p className="text-xs text-emerald-400/70 tracking-widest uppercase font-mono">{project.role} · {project.date}</p>
                     </div>
 
+                    {/* Links */}
+                    <div className="flex gap-2 shrink-0">
+                        {project.github && (
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-xs tracking-widest uppercase px-4 py-2 border border-white/10 text-white/40 rounded-lg hover:text-white hover:border-white/30 transition-all"
+                            >
+                                <FaGithub size={16} />
+                            </a>
+                        )}
+                        {project.demo && (
+                            <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-xs tracking-widest uppercase px-4 py-2 border border-white/10 text-white/40 rounded-lg hover:text-white hover:border-white/30 transition-all"
+                            >
+                                <ExternalLink size={16} />
+                            </a>
+                        )}
+                    </div>
                     <p className="text-sm text-white/40 leading-relaxed mb-4">{project.description}</p>
 
                     {/* Tags */}
