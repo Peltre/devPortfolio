@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 function Navbar() {
     const handleScroll = (e, id) => {
         e.preventDefault()
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth'})
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     }
 
     return (
@@ -16,19 +16,18 @@ function Navbar() {
             </a>
             <div className="flex items-center gap-8">
                 {[
-                    { label: 'Sobre mi', id : 'sobre-mi'},
-                    { label: 'Habilidades', id: 'habilidades'},
-                    { label: 'Proyectos', id: 'proyectos'},
-                    { label: 'Contacto', id: 'contacto'}
+                    { label: 'Sobre mi', id: 'sobre-mi' },
+                    { label: 'Habilidades', id: 'habilidades' },
+                    { label: 'Proyectos', id: 'proyectos' },
                 ].map(({ label, id }) => (
-                <a
-                    key={id}
-                    href={`#${id}`}
-                    onClick={e => handleScroll(e, id)}
-                    className="text-xs tracking-wideset uppercase text-white/50 hover:text-white transition-colors duration-200"
-                >
-                    {label}
-                </a>
+                    <a
+                        key={id}
+                        href={`#${id}`}
+                        onClick={e => handleScroll(e, id)}
+                        className="text-xs tracking-wideset uppercase text-white/50 hover:text-white transition-colors duration-200"
+                    >
+                        {label}
+                    </a>
                 ))}
 
                 <a
