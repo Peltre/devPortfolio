@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { X, ChevronLeft, ChevronRight, GitHub, ExternalLink } from "lucide-react"
+import { FaGithub } from "react-icons/fa6"
+import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 
 function ProjectModal({ project, onClose }) {
     const [currentImage, setCurrentImage] = useState(0)
@@ -102,7 +103,7 @@ function ProjectModal({ project, onClose }) {
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 text-xs tracking-widest uppercase px-4 py-2 border border-white/10 text-white/40 rounded-lg hover:text-white hover:border-white/30 transition-all"
                                 >
-                                    <Github size={16} />
+                                    <FaGithub size={16} />
                                 </a>
                             )}
                             {project.demo && (
