@@ -1,10 +1,34 @@
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 function Navbar() {
+    const [activeSection, setActiveSection] = useState('sobre-mi')
+
+    useEffect(() => {
+        const sections = ['sobre-mi', 'habilidades', 'proyectos']
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id)
+                    }
+                })
+            },
+            { threshold: 0.3 }
+        )
+        sections.forEach(id => {
+            const el = document.getElementById(id)
+            if (el) observer.observe(el)
+        })
+
+        return () => observer.disconnect()
+    }, [])
 
     const handleScroll = (e, id) => {
         e.preventDefault()
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+        setActiveSection(id)
     }
 
     return (
@@ -27,16 +51,22 @@ function Navbar() {
                     { label: 'About me', id: 'sobre-mi' },
                     { label: 'Skills', id: 'habilidades' },
                     { label: 'Projects', id: 'proyectos' },
-                ].map(({ label, id }) => (
-                    <a
-                        key={id}
-                        href={`#${id}`}
-                        onClick={e => handleScroll(e, id)}
-                        className="text-xs tracking-wideset uppercase text-white/50 hover:text-white transition-colors duration-200"
-                    >
-                        {label}
-                    </a>
-                ))}
+                ].map(({ label, id }) => {
+                    const isActive = activeSection === id
+                    return (
+                        <a
+                            key={id}
+                            href={`#${id}`}
+                            onClick={e => handleScroll(e, id)}
+                            className="text-xs tracking-widest uppercase transition-colors duration-200"
+                            style={{
+                                color: isActive ? "#34d399" : "rgba(255,255,255,0.4)"
+                            }}
+                        >
+                            {label}
+                        </a>
+                    )
+                })}
 
                 <a
                     href="/blog"
@@ -50,7 +80,7 @@ function Navbar() {
                     Blog
                 </a>
             </div>
-        </nav>
+        </nav >
     )
 }
 
