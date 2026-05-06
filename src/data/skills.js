@@ -1,4 +1,4 @@
-const CDM = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/"
+const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/"
 
 export const skills = [
     {
