@@ -95,7 +95,7 @@ function ProjectModal({ project, onClose }) {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-2 shrink-0">
+                    <div className="flex gap-2 shrink-0 mb-4">
                         {project.github && (
                             <a
                                 href={project.github}
