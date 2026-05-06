@@ -16,8 +16,8 @@ function Blog() {
                     coming soon
                 </p>
 
-                <h1 className="text-5xl md:text-7xl font-light text-white/90">
-                    Work in <span className="emerald-grad font-medium">Progess</span>
+                <h1 className="text-5xl md:text-5xl font-light text-white/90">
+                    Work in <span className="emerald-grad uppercase font-bold">Progess</span>
                 </h1>
 
                 <p className="text-sm text-white/35 max-w-sm leading-relaxed">
