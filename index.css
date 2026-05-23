@@ -42,3 +42,22 @@ html {
         display: inline-block;
     }
 }
+
+.grid-pattern-animated {
+    background-color: #010308;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 2.5s steps(40, end) infinite;
+}
+
+@keyframes gridMove {
+    from {
+        background-position: 0px 0px;
+    }
+
+    to {
+        background-position: 40px 40px;
+    }
+}
