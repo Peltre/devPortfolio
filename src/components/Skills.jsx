@@ -158,7 +158,7 @@ function Skills() {
 
             {/* But its still very important */}
             <div className="mt-10 mb-6">
-                <p className="text-emerald-400/70 font-medium">But it's still very important...</p>
+                <p className="text-emerald-400/70 font-medium">But it's still very important, so here is my current Tech Stack...</p>
             </div>
 
             <div className="flex gap-2 mb-3">
