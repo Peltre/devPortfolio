@@ -5,14 +5,33 @@ import { useState, useEffect, useRef } from "react"
 
 const categoryColor = (cat) => {
     const map = {
+        // Code
         Language: "#a78bfa",
         Frontend: "#60a5fa",
         Backend: "#6ee7b7",
+        Structure: "#f26b27",
+        Styling: "#27a1f2",
+        Databases: "#2a57fa",
+
+        // Game
         "Game Dev": "#fb923c",
+        Art: "#c9daf5",
+        Building: "#5a3afc",
+
+        // Tools
         Design: "#f472b6",
         Tool: "#94a3b8",
+        Hosting: "#fafafa",
+        Organization: "#2051e6",
+        "Version Control": "#828282",
     }
     return map[cat] || "#94a3b8"
+}
+
+const levelColor = {
+    Advanced: { color: "#34d399", bg: "rgba(52,211,153,0.08)", border: "rgba(52,211,153,0.25)" },
+    Intermediate: { color: "#60a5fa", bg: "rgba(96,165,250,0.08)", border: "rgba(96,165,250,0.25)" },
+    Basic: { color: "#f472b6", bg: "rgba(244,114,182,0.08)", border: "rgba(244,114,182,0.25)" },
 }
 
 // Skill icon minicards
@@ -57,39 +76,51 @@ function DetailPanel({ skill }) {
     const catColor = categoryColor(skill.category)
 
     return (
-        <div className="flex flex-col justify-center gap-4 p-7">
-            {/* Category */}
-            <p className="font-mono text-xs uppercase tracking-widest" style={{ color: catColor }}>
-                {skill.category}
-            </p>
+        <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col justify-center gap-4 p-7">
+                {/* Category */}
+                <p className="font-mono text-xs uppercase tracking-widest" style={{ color: catColor }}>
+                    {skill.category}
+                </p>
 
-            {/* Name */}
-            <h3 className="text-2xl font-light text-white/90">
-                {skill.name}
-            </h3>
+                <div className="flex flex-row gap-3">
+                    {/* Name */}
+                    <h3 className="text-2xl font-bold text-white/90">
+                        {skill.name}
+                    </h3>
 
-            {/* What its used for */}
-            <p className="text-sm leading-relaxed text-white/40">{skill.description}</p>
-
-            {/* Projects used in */}
-            {skill.projects?.length > 0 && (
-                <div>
-                    <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-2.5">
-                        Used in
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                        {skill.projects.map((p) => (
+                    {skill.level && (() => {
+                        const l = levelColor[skill.level] || levelColor.Basic
+                        return (
                             <span
-                                key={p}
-                                className="rounded-full border border-white/10 px-3 py-0.5 font-mono text-[11px] text-white/40"
+                                className="self-center font-mono text-[11px] uppercase tracking-widest px-2.5 py-0.5 rounded-full border"
+                                style={{ color: l.color, background: l.bg, borderColor: l.border }}
                             >
-                                {p}
+                                {skill.level}
                             </span>
-                        ))}
-                    </div>
-
+                        )
+                    })()}
                 </div>
-            )}
+
+                {/* What its used for */}
+                <p className="text-sm leading-relaxed italic text-white/55">{skill.description}</p>
+
+                <hr className="border-t border-white/6" />
+
+                {/* Experience / usage */}
+                {skill.experience && (
+                    <blockquote className="border-l-2 pl-4 text-sm italic leading-relaxed text-white/40"
+                        style={{ borderColor: `${catColor}40` }}
+                    >
+                        {skill.experience}
+                    </blockquote>
+                )}
+            </div>
+
+            {/* Certifications */}
+            <div className="flex flex-col justify-center gap-4 p-7">
+                <p>{skill.certifications}</p>
+            </div>
         </div>
     )
 }
