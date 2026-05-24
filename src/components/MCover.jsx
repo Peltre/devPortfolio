@@ -8,7 +8,7 @@ function MCover() {
             className="relative min-h-screen flex items-center px-8 md:px-20 py-5 overflow-hidden"
         >
             {/* Main container */}
-            <div className="bg-black/50 border border-white/20 p-8 rounded-lg relative flex flex-col md:flex-row items-center gap-4 md:gap-16 justify-center w-full max-w-5xl mx-auto">
+            <div className="bg-black/50 border border-white/8 p-8 rounded-lg relative flex flex-col md:flex-row items-center gap-4 md:gap-16 justify-center w-full max-w-5xl mx-auto">
                 {/* Left side */}
                 <div className="flex-1 max-w-lg">
                     {/* Available to work pill */}
