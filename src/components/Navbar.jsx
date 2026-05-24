@@ -42,7 +42,6 @@ function Navbar() {
         >
             <a
                 className="text-sm tracking-widest text-neutral-100"
-                href="/"
             >
                 Pedro<span className="text-emerald-400">.</span>dev
             </a>
