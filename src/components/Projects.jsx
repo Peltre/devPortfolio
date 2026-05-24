@@ -1,8 +1,10 @@
 import { projects } from "../data/projects"
 import ProjectModal from "./ProjectModal"
 import { useState } from "react"
+import { techColors } from "../utils/techColors"
 
 function ProjectCard({ project, onClick }) {
+
     return (
         <div
             onClick={onClick}
@@ -19,18 +21,26 @@ function ProjectCard({ project, onClick }) {
 
                 {/* Tags over img */}
                 <div className="absolute bottom-3 left-3 flex gap-2 flex-wrap">
-                    {project.tags.map(tag => (
-                        <span
-                            key={tag}
-                            className="text-xs text-emerald-400 bg-emerald-900/60 backdrop-blur-sm border border-emerald-800/50 px-2 py-0.5 rounded-full"
-                        >
-                            {tag}
-                        </span>
-                    ))}
+                    {project.tags.map(tag => {
+                        const color = techColors[tag] || "rgba(255,255,255,0.4)"
+                        return (
+                            <span
+                                key={tag}
+                                className="text-xs font-mono px-2 py-0.5 rounded-full border"
+                                style={{
+                                    color,
+                                    background: `${color}12`,
+                                    borderColor: `${color}30`,
+                                }}
+                            >
+                                {tag}
+                            </span>
+                        )
+                    })}
                 </div>
             </div>
             {/* Basic project info part */}
-            <div className="flex flex-col gap-2 p-5">
+            <div className="flex flex-col gap-2 p-5 bg-black/70">
                 <div className="flex items-center justify-between">
                     <h3 className="text-white/90 font-medium text-lg">{project.title}</h3>
                     <span className="text-xs text-white/25 font-mono">{project.date}</span>

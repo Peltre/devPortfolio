@@ -35,14 +35,13 @@ function Navbar() {
         <nav
             className="sticky top-0 z-50 flex items-center justify-between px-8 h-16 bg-neutral-950/80 backdrop-blur-md border-b border-white/8"
             style={{
-                background: "rgba(3,7,18,0.9)",
-                borderColor: "rgba(52,211,153,0.15)",
-                boxShadow: "0 1px 40px rgba(52,211,153,0.04)"
+                background: "rgba(5,5,5,1)",      // era rgba(3,7,18,0.9) — más cálido
+                borderColor: "rgba(255,255,255,0.06)",   // era verde, ahora neutro
+                boxShadow: "0 1px 30px rgba(0,0,0,0.4)"
             }}
         >
             <a
-                className="text-sm tracking-wideset text-neutral-100"
-                href="/"
+                className="text-sm tracking-widest text-neutral-100"
             >
                 Pedro<span className="text-emerald-400">.</span>dev
             </a>
