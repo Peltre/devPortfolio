@@ -138,21 +138,21 @@ function ProjectModal({ project, onClose }) {
 
                     {/* Header */}
                     <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-emerald-400 mb-1">
+                        <p className="font-mono text-xs uppercase tracking-widest text-emerald-400 mb-1">
                             {project.role}
                         </p>
-                        <h2 className="text-xl font-light text-white/90">{project.title}</h2>
-                        <p className="font-mono text-[10px] text-white/20 mt-1">{project.date}</p>
+                        <h2 className="text-2xl font-bold italic text-white/90">{project.title}</h2>
+                        <p className="font-mono text-xs text-white/20 mt-1">{project.date}</p>
                     </div>
 
-                    <hr className="border-none border-t border-white/6" />
+                    <hr className="border-t border-white/6" />
 
                     {/* Description */}
-                    <p className="text-sm text-white/40 leading-relaxed">{project.description}</p>
+                    <p className="text-sm text-white/40 leading-relaxed">{project.longDescription}</p>
 
                     {/* Tags */}
                     <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-white/20 mb-2">
+                        <p className="font-mono text-[11px] uppercase tracking-widest text-white/20 mb-2">
                             Stack
                         </p>
                         <div className="flex flex-wrap gap-1.5">
@@ -161,7 +161,7 @@ function ProjectModal({ project, onClose }) {
                                 return (
                                     <span
                                         key={tag}
-                                        className="text-[10px] font-mono px-2 py-0.5 rounded-full border"
+                                        className="text-xs font-mono px-2 py-0.5 rounded-full border"
                                         style={{
                                             color,
                                             background: `${color}12`,
@@ -178,7 +178,7 @@ function ProjectModal({ project, onClose }) {
                     {/* Links - only if they exist within the project */}
                     {(project.github || project.demo) && (
                         <div>
-                            <p className="font-mono text-[10px] uppercase tracking-widest text-white/20 mb-2">
+                            <p className="font-mono text-[11px] uppercase tracking-widest text-white/20 mb-2">
                                 Links
                             </p>
                             <div className="flex gap-2">
@@ -187,7 +187,7 @@ function ProjectModal({ project, onClose }) {
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 text-[11px] font-mono px-3 py-1.5 rounded-lg border border-white/10 text-white/40 hover:text-white/80 hover:border-white/25 transition-all"
+                                        className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg border border-white/10 text-white/40 hover:text-white/80 hover:border-white/25 transition-all"
                                     >
                                         <FaGithub size={12} /> GitHub
                                     </a>
@@ -197,7 +197,7 @@ function ProjectModal({ project, onClose }) {
                                         href={project.demo}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 text-[11px] font-mono px-3 py-1.5 rounded-lg border border-emerald-400/25 text-emerald-400 bg-emerald-400/6 hover:bg-emerald-400/12 transition-all"
+                                        className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg border border-emerald-400/25 text-emerald-400 bg-emerald-400/6 hover:bg-emerald-400/12 transition-all"
                                     >
                                         <ExternalLink size={12} /> Demo
                                     </a>
