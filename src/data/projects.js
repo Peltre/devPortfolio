@@ -31,7 +31,7 @@ export const projects = [
     id: 2,
     title: "Phlox",
     date: "2025",
-    role: "Scrum Master & Full-Stack Developer",
+    role: "Scrum Master & Dev",
     description: "Project Management WebApp that utilizes Softtek's AI called Frida",
     longDescription: "Phlox is a custom Project Management tool similar to Jira / Trello, it was created in collaboration with @Softtek, it integrated direct AI service, database auth (Firebase), IoT systems integration & even gamification with Unity, its main goal was to provide a tool that really fitted the companies values by proposing a merge between a Project Management App & a fully intelligent office, sadly demo/repo is not available due to an NDA.",
     images: [
