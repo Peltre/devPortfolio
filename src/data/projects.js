@@ -4,6 +4,7 @@ import topcut3 from "../assets/projects/topcut3.png"
 import phlox1 from "../assets/projects/phlox1.png"
 import phlox2 from "../assets/projects/phlox2.png"
 import phlox3 from "../assets/projects/phlox3.png"
+import phlox4 from "../assets/projects/phlox4.png"
 import kod1 from "../assets/projects/kod1.png"
 import kod2 from "../assets/projects/kod2.png"
 import kod3 from "../assets/projects/kod3.png"
@@ -32,6 +33,7 @@ export const projects = [
     role: "Scrum Master & Full-Stack Developer",
     description: "Project Management WebApp that utilizes Softtek's AI called Frida",
     images: [
+      phlox4,
       phlox1,
       phlox2,
       phlox3,
@@ -48,7 +50,6 @@ export const projects = [
     description: "2D Plataformer developed in 1 week for a class game jam, created using Unity",
     images: [
       kod1,
-      kod2,
       kod3,
     ],
     github: "no hay",
