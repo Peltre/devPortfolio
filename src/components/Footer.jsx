@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaXTwitter, FaItchIo } from "react-icons/fa6"
 
 export default function Footer() {
     return (
-        <footer className="px-8 md:px-20 py-6 border-t border-white/6 flex items-center justify-between gap-6">
+        <footer className="px-8 md:px-20 py-6 border-t border-white/6 flex bg-black/50 items-center justify-between gap-6">
             <span className="text-xs font-mono text-white/20">© 2026 Pedro Sotelo</span>
 
             <div className="flex gap-5">
