@@ -14,7 +14,7 @@ function App() {
                 className="grid-pattern-animated absolute inset-0 pointer-events-none"
 
             />
-            <div className="relative z-10 bg-black/50">
+            <div className="relative z-10 bg-black/40">
                 <Navbar />
                 <MCover />
                 <Skills />
