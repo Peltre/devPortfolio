@@ -8,4 +8,13 @@ export const techColors = {
     Figma: "#f472b6",
     Git: "#fb923c",
     Tailwind: "#38bdf8",
+    Aseprite: "#c9daf5",
+    Vercel: "#fafafa",
+    Trello: "#2051e6",
+    Github: "#828282",
+    HTML: "#f26b27",
+    CSS: "#27a1f2",
+    Vite: "#5a3afc",
+    SQL: "#2a57fa",
+    Typescript: "#35b4f0",
 }
