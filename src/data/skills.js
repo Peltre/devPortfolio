@@ -1,11 +1,19 @@
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/"
 
+import {
+    SiJavascript, SiReact, SiNodedotjs, SiPython,
+    SiUnity, SiFigma, SiGit, SiTailwindcss,
+} from "react-icons/si"
+
+import { TbBrandCSharp } from "react-icons/tb";
+
 export const skills = [
     {
         name: "JavaScript",
         type: "Languages",
         category: "Language",
-        icon: `${CDN}/javascript/javascript-original.svg`,
+        icon: SiJavascript,
+        siColor: "#f7df1e",
         level: 80,
         projects: ["Portfolio", "Game Engine UI"],
         description: "Core language powering both frontend logic and backend scripts.",
@@ -14,7 +22,8 @@ export const skills = [
         name: "React",
         type: "Frameworks",
         category: "Frontend",
-        icon: `${CDN}/react/react-original.svg`,
+        icon: SiReact,
+        siColor: "#61dafb",
         level: 75,
         projects: ["Portfolio"],
         description: "Main framework for building component-based user interfaces.",
@@ -23,7 +32,8 @@ export const skills = [
         name: "Node.js",
         type: "Frameworks",
         category: "Backend",
-        icon: `${CDN}/nodejs/nodejs-original.svg`,
+        icon: SiNodedotjs,
+        siColor: "#6ee7b7",
         level: 60,
         projects: ["API REST"],
         description: "Server-side JavaScript runtime for building APIs and tools.",
@@ -32,7 +42,8 @@ export const skills = [
         name: "Python",
         type: "Languages",
         category: "Language",
-        icon: `${CDN}/python/python-original.svg`,
+        icon: SiPython,
+        siColor: "#60a5fa",
         level: 55,
         projects: ["Data Scripts"],
         description: "Used for automation, scripting, and data processing tasks.",
@@ -41,7 +52,8 @@ export const skills = [
         name: "Unity",
         type: "Frameworks",
         category: "Game Dev",
-        icon: `${CDN}/unity/unity-original.svg`,
+        icon: SiUnity,
+        siColor: "#e2e8f0",
         level: 70,
         projects: ["Dino Game", "AWAQ Game"],
         description: "Primary game engine for 2D and 3D interactive experiences.",
@@ -50,7 +62,8 @@ export const skills = [
         name: "C#",
         type: "Languages",
         category: "Language",
-        icon: `${CDN}/csharp/csharp-original.svg`,
+        icon: TbBrandCSharp,
+        siColor: "#a78bfa",
         level: 65,
         projects: ["Dino Game", "AWAQ Game"],
         description: "Main scripting language inside Unity projects.",
@@ -59,7 +72,8 @@ export const skills = [
         name: "Figma",
         type: "Tools",
         category: "Design",
-        icon: `${CDN}/figma/figma-original.svg`,
+        icon: SiFigma,
+        siColor: "#f472b6",
         level: 65,
         projects: ["Portfolio UI", "App Mockups"],
         description: "UI/UX design tool for wireframing and prototyping.",
@@ -68,7 +82,8 @@ export const skills = [
         name: "Git",
         type: "Tools",
         category: "Tool",
-        icon: `${CDN}/git/git-original.svg`,
+        icon: SiGit,
+        siColor: "#fb923c",
         level: 72,
         projects: ["All projects"],
         description: "Version control system used across every project.",
@@ -77,7 +92,8 @@ export const skills = [
         name: "Tailwind",
         type: "Frameworks",
         category: "Frontend",
-        icon: `${CDN}/tailwindcss/tailwindcss-original.svg`,
+        icon: SiTailwindcss,
+        siColor: "#38bdf8",
         level: 78,
         projects: ["Portfolio"],
         description: "Utility-first CSS framework for rapid UI development.",
@@ -88,21 +104,25 @@ export const softSkills = [
     {
         name: "Problem Solving",
         description: "Ability to analyze complex problems and develop effective solutions.",
-        icon: '◈'
+        icon: '◈',
+        color: "#f472b6",
     },
     {
         name: "Communication",
         description: "Strong verbal and written communication skills for effective collaboration.",
-        icon: '✦'
+        icon: '✦',
+        color: "#60a5fa",
     },
     {
         name: "Teamwork",
         description: "Experience working in diverse teams and contributing to group success.",
-        icon: '⬡'
+        icon: '⬡',
+        color: "#a78bfa",
     },
     {
         name: "Adaptability",
         description: "Ability to quickly learn new technologies and adapt to changing environments.",
-        icon: '◎'
-    }
+        icon: '◎',
+        color: "#fb923c",
+    },
 ]
