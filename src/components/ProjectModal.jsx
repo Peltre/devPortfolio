@@ -89,7 +89,7 @@ function ProjectModal({ project, onClose }) {
                     <img
                         src={project.images[currentImage]}
                         alt={`${project.title} ${currentImage + 1}`}
-                        className="w-full h-full object-contain p-4"
+                        className="w-full h-full object-cover"
                         style={{
                             opacity: imgFade ? 1 : 0,
                             transition: "opacity 0.15s ease",
