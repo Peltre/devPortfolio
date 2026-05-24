@@ -24,7 +24,7 @@ function MCover() {
                         Hello, my name is
                     </p>
                     <h1 className="text-6xl font-bold text-white leading-[1.05] tracking-tight mb-1">
-                        Pedro <span className="text-emerald-400">.</span>
+                        Pedro<span className="text-emerald-400">.</span>
                     </h1>
                     <p className="text-sm uppercase tracking-wide text-white/20 font-normal mb-5">
                         Full Stack Developer &amp; Game Developer
