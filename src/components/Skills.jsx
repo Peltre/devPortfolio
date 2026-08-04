@@ -168,7 +168,7 @@ function Skills() {
             {/* Header */}
             <div className="mb-6">
                 <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-2">
-                    01 / Skills
+                    02 / Skills
                 </p>
                 <h2 className="text-3xl font-light text-white/90">Skills & Stack</h2>
             </div>
