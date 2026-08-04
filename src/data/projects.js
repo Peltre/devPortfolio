@@ -14,6 +14,7 @@ export const projects = [
   {
     id: 1,
     title: "TopCut",
+    featured: true,
     date: "2026",
     role: "Fullstack Developer",
     description: "Modern movie & series rating duel game created with React + TMDB API",
