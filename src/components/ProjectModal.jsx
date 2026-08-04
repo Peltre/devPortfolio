@@ -125,7 +125,7 @@ function ProjectModal({ project, onClose }) {
                                     style={{
                                         width: i === currentImage ? "16px" : "4px",
                                         height: "4px",
-                                        background: i === currentImage ? "#34d399" : "rgba(255,255,255,0.25)",
+                                        background: i === currentImage ? "var(--color-primary-400)" : "rgba(255,255,255,0.25)",
                                     }}
                                 />
                             ))}
@@ -138,7 +138,7 @@ function ProjectModal({ project, onClose }) {
 
                     {/* Header */}
                     <div>
-                        <p className="font-mono text-xs uppercase tracking-widest text-emerald-400 mb-1">
+                        <p className="font-mono text-xs uppercase tracking-widest text-primary-400 mb-1">
                             {project.role}
                         </p>
                         <h2 className="text-2xl font-bold italic text-white/90">{project.title}</h2>
@@ -187,7 +187,7 @@ function ProjectModal({ project, onClose }) {
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg border border-white/10 text-white/40 hover:text-white/80 hover:border-white/25 transition-all"
+                                        className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg border border-primary-400/25 text-primary-400 bg-primary-400/6 hover:bg-primary-400/12 hover:shadow-[0_0_18px_rgba(255,226,155,0.25)] transition-all"
                                     >
                                         <FaGithub size={12} /> GitHub
                                     </a>
@@ -197,7 +197,7 @@ function ProjectModal({ project, onClose }) {
                                         href={project.demo}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg border border-emerald-400/25 text-emerald-400 bg-emerald-400/6 hover:bg-emerald-400/12 transition-all"
+                                        className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg border border-accent-400/25 text-accent-400 bg-accent-400/6 hover:bg-accent-400/12 hover:shadow-[0_0_18px_rgba(34,211,238,0.3)] transition-all"
                                     >
                                         <ExternalLink size={12} /> Demo
                                     </a>

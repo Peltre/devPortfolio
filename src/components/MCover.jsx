@@ -12,9 +12,12 @@ function MCover() {
                 {/* Left side */}
                 <div className="flex-1 max-w-lg">
                     {/* Available to work pill */}
-                    <div className="inline-flex items-center gap-2 bg-emerald-400/8 border border-emerald-400/25 rounded-full px-3 py-1.5 mb-7">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span className="text-xs font-medium text-emerald-400 tracking-widest uppercase">
+                    <div className="inline-flex items-center gap-2 bg-primary-400/8 border border-primary-400/25 rounded-full px-3 py-1.5 mb-7">
+                        <span className="relative flex w-1.5 h-1.5">
+                            <span className="absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-60 animate-ping" />
+                            <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-primary-400" />
+                        </span>
+                        <span className="text-xs font-medium text-primary-400 tracking-widest uppercase">
                             Available to work
                         </span>
                     </div>
@@ -24,7 +27,7 @@ function MCover() {
                         Hello, my name is
                     </p>
                     <h1 className="text-6xl font-bold text-white leading-[1.05] tracking-tight mb-1">
-                        Pedro<span className="text-emerald-400">.</span>
+                        Pedro<span className="text-primary-400">.</span>
                     </h1>
                     <p className="text-sm uppercase tracking-wide text-white/20 font-normal mb-5">
                         Full Stack Developer &amp; Game Developer
@@ -50,7 +53,7 @@ function MCover() {
                             href="https://www.linkedin.com/in/pedroj-sotelo-arce"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-xs font-semibold tracking-widest px-3.5 py-1.5 rounded-md bg-blue-400/10 border border-blue-400/25 text-blue-400 hover:bg-blue-400/20 transition-colors duration-150"
+                            className="flex items-center gap-1.5 text-xs font-semibold tracking-widest px-3.5 py-1.5 rounded-md bg-accent-400/10 border border-accent-400/25 text-accent-400 hover:bg-accent-400/20 transition-colors duration-150"
                         >
                             <FaLinkedin className="text-sm" />
                             LinkedIn
@@ -68,7 +71,7 @@ function MCover() {
                             href="https://pedr1p.itch.io/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-xs font-semibold tracking-widest px-3.5 py-1.5 rounded-md bg-pink-400/10 border border-pink-400/25 text-pink-400 hover:bg-pink-400/20 transition-colors duration-150"
+                            className="flex items-center gap-1.5 text-xs font-semibold tracking-widest px-3.5 py-1.5 rounded-md bg-secondary-400/10 border border-secondary-400/25 text-secondary-400 hover:bg-secondary-400/20 transition-colors duration-150"
                         >
                             <FaItchIo className="text-sm" />
                             Itch.io
@@ -81,17 +84,17 @@ function MCover() {
                     <div className="relative">
 
                         {/* Overlay decor border */}
-                        <div className="absolute top-2 left-2 -right-2 -bottom-2 rounded-2xl border border-emerald-400/20 pointer-events-none" />
+                        <div className="absolute top-2 left-2 -right-2 -bottom-2 rounded-2xl border border-accent-400/20 pointer-events-none" />
 
                         {/* 3. Picture */}
-                        <div className="w-52 h-72 rounded-2xl border border-emerald-400/15 overflow-hidden bg-emerald-950/30 relative z-10">
+                        <div className="w-52 h-72 rounded-2xl border border-primary-400/15 overflow-hidden bg-primary-500/10 relative z-10 ember-breathe">
                             <img src={foto} alt="Pedro" className="w-full h-full object-cover" />
                         </div>
 
                         {/* Currently learning chip */}
                         <div className="absolute -bottom-3 -left-12 z-20 bg-black backdrop-blur-sm border border-white/10 rounded-xl px-3.5 py-2">
                             <p className="text-[10px] text-white/25 uppercase tracking-widest">Currently learning</p>
-                            <p className="text-xs text-emerald-400 font-mono mt-0.5">Unity 3D</p>
+                            <p className="text-xs text-accent-400 font-mono mt-0.5">Unity 3D</p>
                         </div>
                     </div>
                 </div >

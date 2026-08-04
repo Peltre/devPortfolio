@@ -2,13 +2,14 @@ import { projects } from "../data/projects"
 import ProjectModal from "./ProjectModal"
 import { useState } from "react"
 import { techColors } from "../utils/techColors"
+import Reveal from "./Reveal"
 
 function ProjectCard({ project, onClick }) {
 
     return (
         <div
             onClick={onClick}
-            className="group relative flex flex-col rounded-2xl border border-white/8 bg-white/2 overflow-hidden hover:border-emerald-400/30 transition-all duration-300 hover:cursor-pointer">
+            className="glow-card group relative flex flex-col rounded-2xl border border-white/8 bg-white/2 overflow-hidden hover:border-primary-400/30 hover:cursor-pointer">
             {/* Image part */}
             <div className="relative h-56 overflow-hidden">
                 <img
@@ -46,7 +47,7 @@ function ProjectCard({ project, onClick }) {
                     <span className="text-xs text-white/25 font-mono">{project.date}</span>
                 </div>
                 {/* role */}
-                <p className="text-xs text-emerald-400/70 tracking-widest uppercase font-mono">{project.role}</p>
+                <p className="text-xs text-primary-400/70 tracking-widest uppercase font-mono">{project.role}</p>
                 {/* description */}
                 <p className="text-sm text-white/40 leading-relaxed">{project.description}</p>
             </div>
@@ -67,12 +68,13 @@ function Projects() {
             </div>
             {/* Card grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map(project => (
-                    <ProjectCard
-                        key={project.id}
-                        project={project}
-                        onClick={() => setSelectedProject(project)}
-                    />
+                {projects.map((project, i) => (
+                    <Reveal key={project.id} delay={(i % 3) * 80}>
+                        <ProjectCard
+                            project={project}
+                            onClick={() => setSelectedProject(project)}
+                        />
+                    </Reveal>
                 ))}
             </div>
 

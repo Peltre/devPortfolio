@@ -5,6 +5,7 @@ import { projects } from "../data/projects";
 import { lastShipped } from "../data/status";
 import { techColors } from "../utils/techColors";
 import ProjectModal from "./ProjectModal";
+import Reveal from "./Reveal";
 
 // Splits a duration in ms into days, hours, minutes, seconds
 function splitDuration(ms) {
@@ -32,10 +33,10 @@ function useElapsedSince(date) {
 function TimeBlock({ value, label }) {
     return (
         <div className="flex flex-col items-center">
-            <span className="text-3xl md:text-4xl font-bold font-mono text-emerald-400 tabular-nums">
+            <span className="clock-digits text-5xl md:text-6xl text-primary-400 tabular-nums glow-text">
                 {value}
             </span>
-            <span className="text-[10px] uppercase tracking-widest text-white/25 mt-1.5">
+            <span className="text-[10px] uppercase tracking-widest text-white/25 mt-2 font-mono">
                 {label}
             </span>
         </div>
@@ -49,24 +50,24 @@ function ShipClock() {
     const { days, hours, minutes, seconds } = splitDuration(elapsed)
 
     return (
-        <div className="flex flex-col justify-center gap-6 rounded-2xl border border-white/8 bg-black/50 p-7 h-full">
+        <div className="flex flex-col items-center justify-center text-center gap-7 rounded-2xl border border-white/8 bg-black/50 p-9 h-full min-h-[420px]">
             <p className="font-mono text-xs uppercase tracking-widest text-white/20">
                 Time since I last shipped
             </p>
 
-            <div className="flex items-baseline gap-3 md:gap-5">
+            <div className="flex items-baseline justify-center gap-1 md:gap-1">
                 <TimeBlock value={days} label="days" />
-                <span className="text-white/10 text-2xl -mt-4">:</span>
+                <span className="clock-digits text-white/90 text-3xl md:text-4xl -mt-5">:</span>
                 <TimeBlock value={String(hours).padStart(2, "0")} label="hrs" />
-                <span className="text-white/10 text-2xl -mt-4">:</span>
+                <span className="clock-digits text-white/90 text-3xl md:text-4xl -mt-5">:</span>
                 <TimeBlock value={String(minutes).padStart(2, "0")} label="min" />
-                <span className="text-white/10 text-2xl -mt-4">:</span>
+                <span className="clock-digits text-white/90 text-3xl md:text-4xl -mt-5">:</span>
                 <TimeBlock value={String(seconds).padStart(2, "0")} label="sec" />
             </div>
 
-            <p className="text-xs text-white/40 leading-relaxed">
+            <p className="text-xs text-white/40 leading-relaxed max-w-xs">
                 Last shipped{" "}
-                <span className="text-emerald-400 font-medium">{lastShipped.project}</span>
+                <span className="text-accent-400 font-medium">{lastShipped.project}</span>
                 . Every new deploy resets the clock back to zero.
             </p>
         </div>
@@ -78,7 +79,7 @@ function FeaturedSpotlight({ project, onOpen }) {
     return (
         <div
             onClick={() => onOpen(project)}
-            className="group relative flex flex-col md:flex-row rounded-2xl border border-white/8 bg-black/50 overflow-hidden hover:border-emerald-400/30 transition-all duration-300 hover:cursor-pointer h-full"
+            className="glow-card group relative flex flex-col md:flex-row rounded-2xl border border-white/8 bg-black/50 overflow-hidden hover:border-primary-400/30 hover:cursor-pointer h-full min-h-[420px]"
         >
             {/* Image */}
             <div className="relative md:w-2/5 h-48 md:h-auto overflow-hidden">
@@ -88,7 +89,7 @@ function FeaturedSpotlight({ project, onOpen }) {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-gray-950 via-gray-950/10 to-transparent" />
-                <span className="absolute top-3 left-3 text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-400">
+                <span className="absolute top-3 left-3 text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full border border-secondary-400/30 bg-secondary-400/10 text-secondary-400">
                     Featured
                 </span>
             </div>
@@ -99,7 +100,7 @@ function FeaturedSpotlight({ project, onOpen }) {
                     <h3 className="text-white/90 font-medium text-lg">{project.title}</h3>
                     <span className="text-xs text-white/25 font-mono">{project.date}</span>
                 </div>
-                <p className="text-xs text-emerald-400/70 tracking-widest uppercase font-mono">
+                <p className="text-xs text-primary-400/70 tracking-widest uppercase font-mono">
                     {project.role}
                 </p>
                 <p className="text-sm text-white/40 leading-relaxed">{project.description}</p>
@@ -131,9 +132,9 @@ function StatusRow() {
     const featured = projects.find((p) => p.featured) || projects[0]
 
     return (
-        <section id="now" className="px-8 md:px-20 py-5">
+        <section id="now" className="px-8 md:px-20 py-16">
             {/* Header */}
-            <div className="mb-6">
+            <div className="mb-8">
                 <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-2">
                     01 / Now
                 </p>
@@ -141,12 +142,12 @@ function StatusRow() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                <div className="md:col-span-2">
+                <Reveal className="md:col-span-2">
                     <ShipClock />
-                </div>
-                <div className="md:col-span-3">
+                </Reveal>
+                <Reveal className="md:col-span-3" delay={120}>
                     <FeaturedSpotlight project={featured} onOpen={setSelectedProject} />
-                </div>
+                </Reveal>
             </div>
 
             {selectedProject && (

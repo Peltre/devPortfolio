@@ -33,17 +33,12 @@ function Navbar() {
 
     return (
         <nav
-            className="sticky top-0 z-50 flex items-center justify-between px-8 h-16 bg-neutral-950/80 backdrop-blur-md border-b border-white/8"
-            style={{
-                background: "rgba(5,5,5,1)",      // era rgba(3,7,18,0.9) — más cálido
-                borderColor: "rgba(255,255,255,0.06)",   // era verde, ahora neutro
-                boxShadow: "0 1px 30px rgba(0,0,0,0.4)"
-            }}
+            className="sticky top-0 z-50 flex items-center justify-between px-8 h-16 bg-black border-b border-white/6 shadow-[0_1px_30px_rgba(0,0,0,0.4)] backdrop-blur-md"
         >
             <a
                 className="text-sm tracking-widest text-neutral-100"
             >
-                Pedro<span className="text-emerald-400">.</span>dev
+                Pedro<span className="text-primary-400">.</span>dev
             </a>
             <div className="flex items-center gap-8">
                 {[
@@ -58,10 +53,7 @@ function Navbar() {
                             key={id}
                             href={`#${id}`}
                             onClick={e => handleScroll(e, id)}
-                            className="text-xs tracking-widest uppercase transition-colors duration-200"
-                            style={{
-                                color: isActive ? "#34d399" : "rgba(255,255,255,0.4)"
-                            }}
+                            className={`text-xs tracking-widest uppercase transition-colors duration-200 ${isActive ? "text-primary-400" : "text-white/40"}`}
                         >
                             {label}
                         </a>
@@ -70,12 +62,7 @@ function Navbar() {
 
                 <a
                     href="/blog"
-                    className="text-xs tracking-widest uppercase text-neutral-100 px-4 py-1.5 rounded border border-white/15 bg-white/5 hover:bg-white/10 transition-colors duration-200"
-                    style={{
-                        color: "#34d399",
-                        borderColor: "rgba(52,211,153,0.3)",
-                        background: "rgba(52,211,153,0.06)"
-                    }}
+                    className="text-xs tracking-widest uppercase text-primary-400 px-4 py-1.5 rounded border border-primary-400/30 bg-primary-400/6 hover:bg-primary-400/10 transition-all duration-200 hover:shadow-[0_0_18px_rgba(255,226,155,0.22)]"
                 >
                     Blog
                 </a>

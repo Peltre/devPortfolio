@@ -1,37 +1,29 @@
 import { softSkills, skills } from "../data/skills"
 import { useState, useEffect, useRef } from "react"
+import Reveal from "./Reveal"
+import { glowGradient } from "../utils/techColors"
 
 // Category color map
 
-const categoryColor = (cat) => {
-    const map = {
-        // Code
-        Language: "#a78bfa",
-        Frontend: "#60a5fa",
-        Backend: "#6ee7b7",
-        Structure: "#f26b27",
-        Styling: "#27a1f2",
-        Databases: "#2a57fa",
+const categories = [
+    "Language", "Frontend", "Backend", "Structure", "Styling", "Databases",
+    "Game Dev", "Art", "Building",
+    "Design", "Tool", "Hosting", "Organization", "Version Control",
+]
 
-        // Game
-        "Game Dev": "#fb923c",
-        Art: "#c9daf5",
-        Building: "#5a3afc",
+const categoryColorMap = Object.fromEntries(
+    categories.map((cat, i) => [cat, glowGradient[(i + 3) % glowGradient.length]])
+)
 
-        // Tools
-        Design: "#f472b6",
-        Tool: "#94a3b8",
-        Hosting: "#fafafa",
-        Organization: "#2051e6",
-        "Version Control": "#828282",
-    }
-    return map[cat] || "#94a3b8"
-}
+const categoryColor = (cat) => categoryColorMap[cat] || glowGradient[glowGradient.length - 1]
 
+// Mirrors --color-primary-400 / --color-accent-400 / --color-secondary-300
+// from index.css (kept as raw hex since these feed rgba-style bg/border
+// strings, not var()).
 const levelColor = {
-    Advanced: { color: "#34d399", bg: "rgba(52,211,153,0.08)", border: "rgba(52,211,153,0.25)" },
-    Intermediate: { color: "#60a5fa", bg: "rgba(96,165,250,0.08)", border: "rgba(96,165,250,0.25)" },
-    Basic: { color: "#f472b6", bg: "rgba(244,114,182,0.08)", border: "rgba(244,114,182,0.25)" },
+    Advanced: { color: "#ffd066", bg: "rgba(255,208,102,0.1)", border: "rgba(255,208,102,0.3)" },
+    Intermediate: { color: "#22d3ee", bg: "rgba(34,211,238,0.08)", border: "rgba(34,211,238,0.25)" },
+    Basic: { color: "#fde047", bg: "rgba(253,224,71,0.08)", border: "rgba(253,224,71,0.25)" },
 }
 
 // Skill icon minicards
@@ -47,6 +39,7 @@ function SkillButton({ skill, active, onClick }) {
             style={{
                 background: active ? `${color}18` : `${color}08`,
                 borderColor: active ? `${color}55` : `${color}20`,
+                boxShadow: active ? `0 0 18px ${color}40` : "none",
             }}
         >
             {Icon
@@ -191,12 +184,10 @@ function Skills() {
                         <button
                             key={tab}
                             onClick={() => handleFilter(tab)}
-                            className="font-mono text-xs px-4 py-1.5 rounded-full border transition-all duration-150"
-                            style={{
-                                background: isActive ? "rgba(52,211,153,0.08)" : "transparent",
-                                borderColor: isActive ? "rgba(52,211,153,0.35)" : "rgba(255,255,255,0.08)",
-                                color: isActive ? "#34d399" : "rgba(255,255,255,0.3)",
-                            }}
+                            className={`font-mono text-xs px-4 py-1.5 rounded-full border transition-all duration-150 ${isActive
+                                ? "bg-primary-400/8 border-primary-400/35 text-primary-400"
+                                : "bg-transparent border-white/8 text-white/30"
+                                }`}
                         >
                             {tab}
                         </button>
