@@ -5,7 +5,7 @@ function Navbar() {
     const [activeSection, setActiveSection] = useState('sobre-mi')
 
     useEffect(() => {
-        const sections = ['sobre-mi', 'habilidades', 'proyectos']
+        const sections = ['sobre-mi', 'now', 'habilidades', 'proyectos']
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -48,6 +48,7 @@ function Navbar() {
             <div className="flex items-center gap-8">
                 {[
                     { label: 'About me', id: 'sobre-mi' },
+                    { label: 'Now', id: 'now' },
                     { label: 'Skills', id: 'habilidades' },
                     { label: 'Projects', id: 'proyectos' },
                 ].map(({ label, id }) => {

@@ -3,6 +3,7 @@ import Navbar from "./src/components/Navbar"
 import Projects from "./src/components/Projects"
 import Skills from "./src/components/Skills"
 import Footer from "./src/components/Footer"
+import StatusRow from "./src/components/StatusRow"
 
 
 
@@ -17,6 +18,7 @@ function App() {
             <div className="relative z-10 bg-black/15">
                 <Navbar />
                 <MCover />
+                <StatusRow />
                 <Skills />
                 <Projects />
                 <Footer />
