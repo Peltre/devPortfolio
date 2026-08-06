@@ -5,7 +5,7 @@ function Navbar() {
     const [activeSection, setActiveSection] = useState('sobre-mi')
 
     useEffect(() => {
-        const sections = ['sobre-mi', 'now', 'habilidades', 'proyectos']
+        const sections = ['sobre-mi', 'now', 'habilidades', 'proyectos', 'journey']
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -46,6 +46,7 @@ function Navbar() {
                     { label: 'Now', id: 'now' },
                     { label: 'Skills', id: 'habilidades' },
                     { label: 'Projects', id: 'proyectos' },
+                    { label: 'Journey', id: 'journey' },
                 ].map(({ label, id }) => {
                     const isActive = activeSection === id
                     return (
