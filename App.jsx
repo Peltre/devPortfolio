@@ -4,6 +4,7 @@ import Projects from "./src/components/Projects"
 import Skills from "./src/components/Skills"
 import Footer from "./src/components/Footer"
 import StatusRow from "./src/components/StatusRow"
+import Journey from "./src/components/Journey"
 
 
 
@@ -21,6 +22,7 @@ function App() {
                 <StatusRow />
                 <Skills />
                 <Projects />
+                <Journey />
                 <Footer />
             </div>
         </div>
