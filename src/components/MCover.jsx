@@ -29,7 +29,7 @@ function MCover() {
                     <h1 className="text-6xl font-bold text-white leading-[1.05] tracking-tight mb-1">
                         Pedro<span className="text-primary-400">.</span>
                     </h1>
-                    <p className="text-sm uppercase tracking-wide text-white/20 font-normal mb-5">
+                    <p className="text-sm uppercase tracking-wide text-primary-400/80 font-medium mb-5 [text-shadow:0_0_8px_rgba(255,208,102,0.3)]">
                         Full Stack Developer &amp; Game Developer
                     </p>
                     {/* Bio */}
@@ -82,6 +82,9 @@ function MCover() {
                 {/* Right side */}
                 < div className="shrink-0 flex flex-col items-center" >
                     <div className="relative">
+
+                        {/* Decorative shard behind photo */}
+                        <div className="hero-shard absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 w-64 h-64 md:w-80 md:h-80 pointer-events-none" />
 
                         {/* Overlay decor border */}
                         <div className="absolute top-2 left-2 -right-2 -bottom-2 rounded-2xl border border-accent-400/20 pointer-events-none" />

@@ -63,7 +63,7 @@ function Projects() {
         <section id="proyectos" className="px-8 md:px-20 py-10">
             {/* Header */}
             <div className="mb-12">
-                <p className="text-xs tracking-widest uppercase text-white/20 font-mono mb-2"> 03 / Projects</p>
+                <p className="text-xs tracking-widest uppercase text-white/35 font-mono mb-2"> 03 / Projects</p>
                 <h2 className="text-3xl font-light text-white/90">Things I've built</h2>
             </div>
             {/* Card grid */}

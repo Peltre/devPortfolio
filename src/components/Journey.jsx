@@ -60,7 +60,7 @@ function Journey() {
         <section id="journey" className="px-8 md:px-20 py-16">
             {/* Header */}
             <div className="mb-10">
-                <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-2">
+                <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">
                     04 / Journey
                 </p>
                 <h2 className="text-3xl font-light text-white/90">How I got here</h2>

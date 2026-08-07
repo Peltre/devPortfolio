@@ -160,7 +160,7 @@ function Skills() {
         <section id="habilidades" className="px-8 md:px-20 py-5">
             {/* Header */}
             <div className="mb-6">
-                <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-2">
+                <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">
                     02 / Skills
                 </p>
                 <h2 className="text-3xl font-light text-white/90">Skills & Stack</h2>
@@ -202,7 +202,7 @@ function Skills() {
             >
                 {/* Left - icon grid */}
                 <div className="border-r border-white/6 p-4">
-                    <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-4">
+                    <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-4">
                         Stack
                     </p>
                     <div className="grid grid-cols-4 gap-2">

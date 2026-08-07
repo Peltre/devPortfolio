@@ -36,7 +36,7 @@ function TimeBlock({ value, label }) {
             <span className="clock-digits text-5xl md:text-6xl text-primary-400 tabular-nums glow-text">
                 {value}
             </span>
-            <span className="text-[10px] uppercase tracking-widest text-white/25 mt-2 font-mono">
+            <span className="text-[10px] uppercase tracking-widest text-white/40 mt-2 font-mono">
                 {label}
             </span>
         </div>
@@ -51,7 +51,7 @@ function ShipClock() {
 
     return (
         <div className="flex flex-col items-center justify-center text-center gap-7 rounded-2xl border border-white/8 bg-black/50 p-9 h-full min-h-[420px]">
-            <p className="font-mono text-xs uppercase tracking-widest text-white/20">
+            <p className="font-mono text-xs uppercase tracking-widest text-white/35">
                 Time since I last shipped
             </p>
 
@@ -135,7 +135,7 @@ function StatusRow() {
         <section id="now" className="px-8 md:px-20 py-16">
             {/* Header */}
             <div className="mb-8">
-                <p className="font-mono text-xs uppercase tracking-widest text-white/20 mb-2">
+                <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">
                     01 / Now
                 </p>
                 <h2 className="text-3xl font-light text-white/90">What I'm up to</h2>
