@@ -39,6 +39,26 @@ body {
 
 html {
     scroll-behavior: smooth;
+    scrollbar-color: rgba(255, 208, 102, 0.3) rgba(0, 0, 0, 0.3);
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 208, 102, 0.3);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 208, 102, 0.5);
 }
 
 @layer components {
