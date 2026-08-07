@@ -5,7 +5,7 @@ function MCover() {
     return (
         <section
             id="sobre-mi"
-            className="relative min-h-screen flex items-center px-8 md:px-20 py-5 overflow-hidden"
+            className="relative min-h-screen flex items-center px-8 md:px-20 py-5 overflow-hidden scroll-mt-20"
         >
             {/* Main container */}
             <div className="bg-black/50 border border-white/8 p-8 rounded-lg relative flex flex-col md:flex-row items-center gap-4 md:gap-16 justify-center w-full max-w-5xl mx-auto">
@@ -29,7 +29,7 @@ function MCover() {
                     <h1 className="text-6xl font-bold text-white leading-[1.05] tracking-tight mb-1">
                         Pedro<span className="text-primary-400">.</span>
                     </h1>
-                    <p className="text-sm uppercase tracking-wide text-primary-400/80 font-medium mb-5 [text-shadow:0_0_8px_rgba(255,208,102,0.3)]">
+                    <p className="text-sm uppercase tracking-wide text-primary-400/50 font-medium mb-5 [text-shadow:0_0_8px_rgba(255,208,102,0.3)]">
                         Full Stack Developer &amp; Game Developer
                     </p>
                     {/* Bio */}
@@ -82,9 +82,6 @@ function MCover() {
                 {/* Right side */}
                 < div className="shrink-0 flex flex-col items-center" >
                     <div className="relative">
-
-                        {/* Decorative shard behind photo */}
-                        <div className="hero-shard absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 w-64 h-64 md:w-80 md:h-80 pointer-events-none" />
 
                         {/* Overlay decor border */}
                         <div className="absolute top-2 left-2 -right-2 -bottom-2 rounded-2xl border border-accent-400/20 pointer-events-none" />

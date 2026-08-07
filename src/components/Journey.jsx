@@ -57,7 +57,7 @@ function JourneyCard({ item }) {
 
 function Journey() {
     return (
-        <section id="journey" className="px-8 md:px-20 py-16">
+        <section id="journey" className="px-8 md:px-20 py-16 scroll-mt-20">
             {/* Header */}
             <div className="mb-10">
                 <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">

@@ -157,7 +157,7 @@ function Skills() {
     }
 
     return (
-        <section id="habilidades" className="px-8 md:px-20 py-5">
+        <section id="habilidades" className="px-8 md:px-20 py-5 scroll-mt-20">
             {/* Header */}
             <div className="mb-6">
                 <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">

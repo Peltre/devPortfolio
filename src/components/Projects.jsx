@@ -11,11 +11,11 @@ function ProjectCard({ project, onClick }) {
             onClick={onClick}
             className="glow-card group relative flex flex-col rounded-2xl border border-white/8 bg-white/2 overflow-hidden hover:border-primary-400/30 hover:cursor-pointer">
             {/* Image part */}
-            <div className="relative h-56 overflow-hidden">
+            <div className="relative h-56 overflow-hidden rounded-t-2xl">
                 <img
                     src={project.images[0]}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
                 />
                 {/* Overlay over img */}
                 <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent" />
@@ -60,7 +60,7 @@ function Projects() {
     const [selectedProject, setSelectedProject] = useState(null)
 
     return (
-        <section id="proyectos" className="px-8 md:px-20 py-10">
+        <section id="proyectos" className="px-8 md:px-20 py-10 scroll-mt-20">
             {/* Header */}
             <div className="mb-12">
                 <p className="text-xs tracking-widest uppercase text-white/35 font-mono mb-2"> 03 / Projects</p>

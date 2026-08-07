@@ -132,7 +132,7 @@ function StatusRow() {
     const featured = projects.find((p) => p.featured) || projects[0]
 
     return (
-        <section id="now" className="px-8 md:px-20 py-16">
+        <section id="now" className="px-8 md:px-20 py-16 scroll-mt-20">
             {/* Header */}
             <div className="mb-8">
                 <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">
