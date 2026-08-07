@@ -1,61 +1,61 @@
-import { journey, activeSince } from "../data/journey"
-import { projects } from "../data/projects"
+import { journey } from "../data/journey"
 import Reveal from "./Reveal"
 
-function JourneyNode({ item, isLast }) {
+function JourneyCard({ item }) {
     const done = item.status === "done"
 
     return (
-        <div className="relative pl-10">
-            {/* Connector to next node */}
-            {!isLast && (
-                <span className="absolute left-[7px] top-5 bottom-[-24px] w-px bg-white/10" />
-            )}
+        <div className="relative px-3 text-center">
+            {/* Small tick above the dot, purely decorative */}
+            <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-8 h-px bg-white/10" />
 
             {/* Dot */}
             <span
-                className={`absolute left-0 top-0.5 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-mono ${done
-                    ? "bg-primary-400 text-black shadow-[0_0_10px_rgba(255,208,102,0.35)]"
-                    : "bg-black border border-white/15 text-white/30"
+                className={`relative z-10 mx-auto mb-4 block w-3 h-3 rounded-full ${done
+                    ? "bg-primary-400 shadow-[0_0_5px_1px_rgba(255,208,102,0.7),0_0_12px_3px_rgba(255,208,102,0.3)]"
+                    : "bg-black border border-white/20"
                     }`}
-            >
-                {done ? "✓" : "···"}
-            </span>
+            />
 
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/25 mb-1">
+            <p className="font-mono text-[9px] uppercase tracking-widest text-white/25 mb-1">
                 {item.year}
             </p>
-            <p className={`text-sm ${done ? "text-white/80" : "text-white/35"}`}>
+            <p className={`text-sm mb-1.5 ${done ? "text-white/85" : "text-white/35"}`}>
                 {item.title}
             </p>
-        </div>
-    )
-}
+            {item.description && (
+                <p className={`text-xs leading-relaxed mb-2.5 ${done ? "text-white/40" : "text-white/25"}`}>
+                    {item.description}
+                </p>
+            )}
 
-function Stat({ value, label }) {
-    return (
-        <div className="border border-white/8 bg-black/50 rounded-2xl p-6 flex flex-col justify-center">
-            <span className="font-mono text-3xl text-primary-400">{value}</span>
-            <span className="font-mono text-[11px] uppercase tracking-widest text-white/30 mt-1.5">
-                {label}
-            </span>
+            {item.image && (
+                <div className="flex justify-center">
+                    <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full max-w-[160px] h-20 object-cover rounded-lg border border-white/10"
+                    />
+                </div>
+            )}
+
+            {item.link && (
+                <div className="flex justify-center">
+                    <a
+                        href={item.link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono text-[10px] text-accent-400 border border-accent-400/30 bg-accent-400/5 rounded-full px-3 py-1.5 hover:bg-accent-400/10 transition-colors"
+                    >
+                        → {item.link.label}
+                    </a>
+                </div>
+            )}
         </div>
     )
 }
 
 function Journey() {
-    // Derived from real data, so these don't go stale on their own.
-    const yearsActive = new Date().getFullYear() - activeSince
-    const shippedGames = projects.filter((p) => p.tags.includes("Unity")).length
-    const goalsInProgress = journey.filter((item) => item.status === "pending").length
-
-    const stats = [
-        { value: yearsActive, label: "Years active" },
-        { value: projects.length, label: "Projects" },
-        { value: shippedGames, label: "Games shipped" },
-        { value: goalsInProgress, label: "Goal in progress" },
-    ]
-
     return (
         <section id="journey" className="px-8 md:px-20 py-16">
             {/* Header */}
@@ -66,31 +66,15 @@ function Journey() {
                 <h2 className="text-3xl font-light text-white/90">How I got here</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                {/* Left - path */}
-                <Reveal className="md:col-span-2">
-                    <div className="border border-white/8 bg-black/50 rounded-2xl p-8 h-full">
-                        <div className="flex flex-col gap-6">
-                            {journey.map((item, i) => (
-                                <JourneyNode
-                                    key={item.title}
-                                    item={item}
-                                    isLast={i === journey.length - 1}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </Reveal>
-
-                {/* Right - stats */}
-                <Reveal className="md:col-span-3" delay={120}>
-                    <div className="grid grid-cols-2 gap-4 h-full">
-                        {stats.map((s) => (
-                            <Stat key={s.label} value={s.value} label={s.label} />
+            <Reveal>
+                <div className="border border-white/8 bg-black/50 rounded-2xl p-8 md:p-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-4 gap-y-10">
+                        {journey.map((item) => (
+                            <JourneyCard key={item.title} item={item} />
                         ))}
                     </div>
-                </Reveal>
-            </div>
+                </div>
+            </Reveal>
         </section>
     )
 }
