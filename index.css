@@ -46,6 +46,34 @@
     --accent-amber-300-rgb: 253 186 116;
     --accent-amber-400-rgb: 251 146 60;
     --accent-amber-500-rgb: 234 88 12;
+
+    --sunset-navbar: #a78bfa;
+    --sunset-hero: #c084fc;
+    --sunset-now: #f472b6;
+    --sunset-skills: #fb7185;
+    --sunset-projects: #fb923c;
+    --sunset-journey: #f59e0b;
+    --sunset-footer: #ea580c;
+}
+
+.page-sunset-wash {
+    background: linear-gradient(
+        180deg,
+        var(--sunset-navbar) 0%,
+        var(--sunset-hero) 8.3%,
+        var(--sunset-now) 16.7%,
+        var(--sunset-skills) 25%,
+        var(--sunset-projects) 33.3%,
+        var(--sunset-journey) 41.7%,
+        var(--sunset-footer) 50%,
+        var(--sunset-journey) 58.3%,
+        var(--sunset-projects) 66.7%,
+        var(--sunset-skills) 75%,
+        var(--sunset-now) 83.3%,
+        var(--sunset-hero) 91.7%,
+        var(--sunset-navbar) 100%
+    );
+    opacity: 0.00;
 }
 
 @font-face {
