@@ -21,9 +21,9 @@ const categoryColor = (cat) => categoryColorMap[cat] || glowGradient[glowGradien
 // from index.css (kept as raw hex since these feed rgba-style bg/border
 // strings, not var()).
 const levelColor = {
-    Advanced: { color: "#8b5cf6", bg: "rgba(var(--primary-400-rgb)/0.1)", border: "rgba(var(--primary-400-rgb)/0.3)" },
-    Intermediate: { color: "#22d3ee", bg: "rgba(var(--accent-400-rgb)/0.08)", border: "rgba(var(--accent-400-rgb)/0.25)" },
-    Basic: { color: "#9aa3b0", bg: "rgba(var(--secondary-300-rgb)/0.08)", border: "rgba(var(--secondary-300-rgb)/0.25)" },
+    Advanced: { color: "#39ff88", bg: "rgba(var(--primary-400-rgb)/0.1)", border: "rgba(var(--primary-400-rgb)/0.3)" },
+    Intermediate: { color: "#00d1b2", bg: "rgba(var(--accent-400-rgb)/0.08)", border: "rgba(var(--accent-400-rgb)/0.25)" },
+    Basic: { color: "#9ca3af", bg: "rgba(var(--secondary-300-rgb)/0.08)", border: "rgba(var(--secondary-300-rgb)/0.25)" },
 }
 
 // Skill icon minicards
@@ -160,7 +160,7 @@ function Skills() {
         <section id="habilidades" className="px-8 md:px-20 py-5 scroll-mt-20">
             {/* Header */}
             <div className="mb-6">
-                <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">
+                <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "var(--sunset-skills)" }}>
                     02 / Skills
                 </p>
                 <h2 className="text-3xl font-light text-white/90">Skills & Stack</h2>

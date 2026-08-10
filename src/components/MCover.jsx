@@ -12,12 +12,12 @@ function MCover() {
                 {/* Left side */}
                 <div className="flex-1 max-w-lg">
                     {/* Available to work pill */}
-                    <div className="inline-flex items-center gap-2 bg-primary-400/8 border border-primary-400/25 rounded-full px-3 py-1.5 mb-7">
+                    <div className="inline-flex items-center gap-2 border rounded-full px-3 py-1.5 mb-7" style={{ background: "color-mix(in srgb, var(--sunset-hero) 8%, transparent)", borderColor: "color-mix(in srgb, var(--sunset-hero) 25%, transparent)" }}>
                         <span className="relative flex w-1.5 h-1.5">
-                            <span className="absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-60 animate-ping" />
-                            <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-primary-400" />
+                            <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "var(--sunset-hero)" }} />
+                            <span className="relative inline-flex w-1.5 h-1.5 rounded-full" style={{ background: "var(--sunset-hero)" }} />
                         </span>
-                        <span className="text-xs font-medium text-primary-400 tracking-widest uppercase">
+                        <span className="text-xs font-medium tracking-widest uppercase" style={{ color: "var(--sunset-hero)" }}>
                             Available to work
                         </span>
                     </div>
@@ -27,9 +27,9 @@ function MCover() {
                         Hello, my name is
                     </p>
                     <h1 className="text-6xl font-bold text-white leading-[1.05] tracking-tight mb-1">
-                        Pedro<span className="text-primary-400">.</span>
+                        Pedro<span className="sunset-grad">.</span>
                     </h1>
-                    <p className="text-sm uppercase tracking-wide text-primary-400/50 font-medium mb-5 [text-shadow:0_0_8px_rgba(var(--primary-400-rgb)/0.3)]">
+                    <p className="sunset-grad text-sm uppercase tracking-wide font-medium mb-5">
                         Full Stack Developer &amp; Game Developer
                     </p>
                     {/* Bio */}
@@ -84,7 +84,7 @@ function MCover() {
                     <div className="relative">
 
                         {/* Overlay decor border */}
-                        <div className="absolute top-2 left-2 -right-2 -bottom-2 rounded-2xl border border-accent-400/20 pointer-events-none" />
+                        <div className="sunset-frame absolute top-2 left-2 -right-2 -bottom-2 rounded-2xl pointer-events-none" />
 
                         {/* 3. Picture */}
                         <div className="w-52 h-72 rounded-2xl border border-primary-400/15 overflow-hidden bg-primary-500/10 relative z-10 ember-breathe">

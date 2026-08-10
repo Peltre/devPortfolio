@@ -16,6 +16,8 @@ function App() {
                 className="grid-pattern-animated absolute inset-0 pointer-events-none"
 
             />
+            {/* Vertical sunset wash - travels from navbar to footer */}
+            <div className="page-sunset-wash absolute inset-0 pointer-events-none" />
             <div className="relative z-10 bg-black/15">
                 <Navbar />
                 <MCover />

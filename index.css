@@ -2,16 +2,23 @@
 
 @theme {
     --color-primary-300: #c4b5fd;
-    --color-primary-400: #8b5cf6;
+    --color-primary-400: #a78bfa;
     --color-primary-500: #7c3aed;
 
-    --color-secondary-300: #9aa3b0;
-    --color-secondary-400: #7d8590;
-    --color-secondary-500: #5b6470;
+    --color-secondary-300: #9ca3af;
+    --color-secondary-400: #6b7280;
+    --color-secondary-500: #4b5563;
 
-    --color-accent-300: #67e8f9;
-    --color-accent-400: #22d3ee;
-    --color-accent-500: #06b6d4;
+    --color-accent-300: #f9a8d4;
+    --color-accent-400: #f472b6;
+    --color-accent-500: #db2777;
+
+    --color-accent-amber-300: #fdba74;
+    --color-accent-amber-400: #fb923c;
+    --color-accent-amber-500: #ea580c;
+
+    --color-highlight-pink: #ff5fa7;
+    --color-highlight-blue: #4da3ff;
 
     --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
@@ -25,16 +32,20 @@
    change. */
 :root {
     --primary-300-rgb: 196 181 253;
-    --primary-400-rgb: 139 92 246;
+    --primary-400-rgb: 167 139 250;
     --primary-500-rgb: 124 58 237;
 
-    --secondary-300-rgb: 154 163 176;
-    --secondary-400-rgb: 125 133 144;
-    --secondary-500-rgb: 91 100 112;
+    --secondary-300-rgb: 156 163 175;
+    --secondary-400-rgb: 107 114 128;
+    --secondary-500-rgb: 75 85 99;
 
-    --accent-300-rgb: 103 232 249;
-    --accent-400-rgb: 34 211 238;
-    --accent-500-rgb: 6 182 212;
+    --accent-300-rgb: 249 168 212;
+    --accent-400-rgb: 244 114 182;
+    --accent-500-rgb: 219 39 119;
+
+    --accent-amber-300-rgb: 253 186 116;
+    --accent-amber-400-rgb: 251 146 60;
+    --accent-amber-500-rgb: 234 88 12;
 }
 
 @font-face {
@@ -174,6 +185,45 @@ html {
         linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: gridMove 2.5s steps(40, end) infinite;
+}
+
+@keyframes sunsetShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.sunset-grad {
+    background: linear-gradient(90deg, var(--color-primary-400), #f472b6, #fb923c, #f472b6, var(--color-primary-400));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    animation: sunsetShift 6s ease-in-out infinite;
+}
+
+.sunset-frame {
+    position: relative;
+}
+
+.sunset-frame::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg, var(--color-primary-400), #f472b6, #fb923c, var(--color-primary-400));
+    background-size: 300% 300%;
+    animation: sunsetShift 8s ease-in-out infinite;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
 @keyframes gridMove {

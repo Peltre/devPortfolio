@@ -33,7 +33,7 @@ function useElapsedSince(date) {
 function TimeBlock({ value, label }) {
     return (
         <div className="flex flex-col items-center">
-            <span className="clock-digits text-5xl md:text-6xl text-primary-400 tabular-nums glow-text">
+            <span className="sunset-grad clock-digits text-5xl md:text-6xl tabular-nums glow-text">
                 {value}
             </span>
             <span className="text-[10px] uppercase tracking-widest text-white/40 mt-2 font-mono">
@@ -135,7 +135,7 @@ function StatusRow() {
         <section id="now" className="px-8 md:px-20 py-16 scroll-mt-20">
             {/* Header */}
             <div className="mb-8">
-                <p className="font-mono text-xs uppercase tracking-widest text-white/35 mb-2">
+                <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "var(--sunset-now)" }}>
                     01 / Now
                 </p>
                 <h2 className="text-3xl font-light text-white/90">What I'm up to</h2>

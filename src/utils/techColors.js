@@ -1,8 +1,6 @@
 // A single orange -> yellow -> light blue glow spectrum shared across the
-// site. Every tech tag pulls its color from this gradient instead of an
-// arbitrary per-brand hue, so the whole tag system reads as one family.
-// Add a new tool to the `techs` array below and it gets the next color in
-// the rotation automatically.
+// site. Skills.jsx uses this for its category colors (grouping unrelated
+// techs into a handful of buckets, where brand colors would be meaningless).
 //
 // These hexes mirror the --color-primary / --color-secondary / --color-accent
 // tokens defined in index.css (@theme). This file can't use var(--...))
@@ -11,39 +9,40 @@
 // with a raw hex value. If you change the palette in index.css, update
 // this array to match.
 export const glowGradient = [
-    "#7c3aed", // primary-500 — deep mustard
-    "#8b5cf6", // primary-400 — mustard
-    "#c4b5fd", // primary-300 — pale mustard glow
-    "#5b6470", // secondary-500 — amber
-    "#7d8590", // secondary-400 — amber-yellow
-    "#9aa3b0", // secondary-300 — yellow
-    "#06b6d4", // accent-500 — cyan
-    "#22d3ee", // accent-400 — cyan glow
-    "#67e8f9", // accent-300 — light cyan glow
-    "#cffafe", // accent-200 — pale cyan glow
+    "#16c960", // primary-500 — deep terminal green
+    "#39ff88", // primary-400 — terminal green
+    "#86ffb5", // primary-300 — pale green glow
+    "#4b5563", // secondary-500 — slate gray
+    "#6b7280", // secondary-400 — mid gray
+    "#9ca3af", // secondary-300 — light gray
+    "#00a896", // accent-500 — deep teal
+    "#00d1b2", // accent-400 — teal
+    "#5eead4", // accent-300 — light teal glow
+    "#99f6e4", // accent-200 — pale teal glow
 ]
 
-const techs = [
-    "JavaScript",
-    "React",
-    "Node.js",
-    "Python",
-    "Unity",
-    "C#",
-    "Figma",
-    "Git",
-    "Tailwind",
-    "Aseprite",
-    "Vercel",
-    "Trello",
-    "Github",
-    "HTML",
-    "CSS",
-    "Vite",
-    "SQL",
-    "Typescript",
-]
-
-export const techColors = Object.fromEntries(
-    techs.map((name, i) => [name, glowGradient[i % glowGradient.length]])
-)
+// Per-tech tag colors, pulled from each tool's real brand color instead of
+// a shared rotation. This is what actually shows up on ProjectCard /
+// ProjectModal / StatusRow tags — a bit more colorful and each tag reads as
+// that specific tool at a glance. To add a new tool, just add a hex here;
+// there's no rotation to keep in sync anymore.
+export const techColors = {
+    JavaScript: "#F7DF1E",
+    React: "#61DAFB",
+    "Node.js": "#3C873A",
+    Python: "#4B8BBE",
+    Unity: "#CBCBCB",
+    "C#": "#9B4F96",
+    Figma: "#F24E1E",
+    Git: "#F05033",
+    Tailwind: "#38BDF8",
+    Aseprite: "#EF5FA7",
+    Vercel: "#F5F5F5",
+    Trello: "#0079BF",
+    Github: "#C9D1D9",
+    HTML: "#E34F26",
+    CSS: "#2965F1",
+    Vite: "#A78BFA",
+    SQL: "#00758F",
+    Typescript: "#3178C6",
+}
