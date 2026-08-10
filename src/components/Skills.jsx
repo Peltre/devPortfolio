@@ -21,9 +21,9 @@ const categoryColor = (cat) => categoryColorMap[cat] || glowGradient[glowGradien
 // from index.css (kept as raw hex since these feed rgba-style bg/border
 // strings, not var()).
 const levelColor = {
-    Advanced: { color: "#ffd066", bg: "rgba(255,208,102,0.1)", border: "rgba(255,208,102,0.3)" },
-    Intermediate: { color: "#22d3ee", bg: "rgba(34,211,238,0.08)", border: "rgba(34,211,238,0.25)" },
-    Basic: { color: "#fde047", bg: "rgba(253,224,71,0.08)", border: "rgba(253,224,71,0.25)" },
+    Advanced: { color: "#8b5cf6", bg: "rgba(var(--primary-400-rgb)/0.1)", border: "rgba(var(--primary-400-rgb)/0.3)" },
+    Intermediate: { color: "#22d3ee", bg: "rgba(var(--accent-400-rgb)/0.08)", border: "rgba(var(--accent-400-rgb)/0.25)" },
+    Basic: { color: "#9aa3b0", bg: "rgba(var(--secondary-300-rgb)/0.08)", border: "rgba(var(--secondary-300-rgb)/0.25)" },
 }
 
 // Skill icon minicards

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary-300: #ffe29b;
-    --color-primary-400: #ffd066;
-    --color-primary-500: #e0a83d;
+    --color-primary-300: #c4b5fd;
+    --color-primary-400: #8b5cf6;
+    --color-primary-500: #7c3aed;
 
-    --color-secondary-300: #fde047;
-    --color-secondary-400: #fbbf24;
-    --color-secondary-500: #f59e0b;
+    --color-secondary-300: #9aa3b0;
+    --color-secondary-400: #7d8590;
+    --color-secondary-500: #5b6470;
 
     --color-accent-300: #67e8f9;
     --color-accent-400: #22d3ee;
@@ -16,6 +16,25 @@
     --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
     --font-digital: "Digital7", "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* RGB triplets mirroring the palette above, for glow/shadow effects that
+   need a variable alpha (rgba/backdrop). Keeping these here means changing
+   the palette is a one-file edit — nobody has to hunt for hardcoded rgba()
+   values in components again. Update these whenever the hex values above
+   change. */
+:root {
+    --primary-300-rgb: 196 181 253;
+    --primary-400-rgb: 139 92 246;
+    --primary-500-rgb: 124 58 237;
+
+    --secondary-300-rgb: 154 163 176;
+    --secondary-400-rgb: 125 133 144;
+    --secondary-500-rgb: 91 100 112;
+
+    --accent-300-rgb: 103 232 249;
+    --accent-400-rgb: 34 211 238;
+    --accent-500-rgb: 6 182 212;
 }
 
 @font-face {
@@ -32,14 +51,14 @@
 }
 
 body {
-    background: #212121;
+    background: #101319;
     color: #e8e8e8;
     font-family: var(--font-sans);
 }
 
 html {
     scroll-behavior: smooth;
-    scrollbar-color: rgba(255, 208, 102, 0.3) rgba(0, 0, 0, 0.3);
+    scrollbar-color: rgba(var(--primary-400-rgb) / 0.3) rgba(0, 0, 0, 0.3);
     scrollbar-width: thin;
 }
 
@@ -53,12 +72,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 208, 102, 0.3);
+    background: rgba(var(--primary-400-rgb) / 0.3);
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 208, 102, 0.5);
+    background: rgba(var(--primary-400-rgb) / 0.5);
 }
 
 @layer components {
@@ -110,12 +129,12 @@ html {
     }
 
     .glow-card:hover {
-        box-shadow: 0 0 26px rgba(255, 226, 155, 0.16), 0 0 60px rgba(255, 226, 155, 0.06);
+        box-shadow: 0 0 26px rgba(var(--primary-300-rgb) / 0.16), 0 0 60px rgba(var(--primary-300-rgb) / 0.06);
         transform: translateY(-3px);
     }
 
     .glow-text {
-        text-shadow: 0 0 14px rgba(255, 226, 155, 0.35);
+        text-shadow: 0 0 14px rgba(var(--primary-300-rgb) / 0.35);
     }
 
     .clock-digits {
@@ -126,10 +145,10 @@ html {
 
 @keyframes emberPulse {
     0%, 100% {
-        box-shadow: 0 0 26px rgba(255, 226, 155, 0.14), 0 0 55px rgba(255, 226, 155, 0.05);
+        box-shadow: 0 0 26px rgba(var(--primary-300-rgb) / 0.14), 0 0 55px rgba(var(--primary-300-rgb) / 0.05);
     }
     50% {
-        box-shadow: 0 0 36px rgba(255, 226, 155, 0.2), 0 0 80px rgba(255, 226, 155, 0.08);
+        box-shadow: 0 0 36px rgba(var(--primary-300-rgb) / 0.2), 0 0 80px rgba(var(--primary-300-rgb) / 0.08);
     }
 }
 

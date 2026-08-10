@@ -29,7 +29,7 @@ function MCover() {
                     <h1 className="text-6xl font-bold text-white leading-[1.05] tracking-tight mb-1">
                         Pedro<span className="text-primary-400">.</span>
                     </h1>
-                    <p className="text-sm uppercase tracking-wide text-primary-400/50 font-medium mb-5 [text-shadow:0_0_8px_rgba(255,208,102,0.3)]">
+                    <p className="text-sm uppercase tracking-wide text-primary-400/50 font-medium mb-5 [text-shadow:0_0_8px_rgba(var(--primary-400-rgb)/0.3)]">
                         Full Stack Developer &amp; Game Developer
                     </p>
                     {/* Bio */}

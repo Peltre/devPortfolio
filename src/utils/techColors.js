@@ -11,12 +11,12 @@
 // with a raw hex value. If you change the palette in index.css, update
 // this array to match.
 export const glowGradient = [
-    "#e0a83d", // primary-500 — deep mustard
-    "#ffd066", // primary-400 — mustard
-    "#ffe29b", // primary-300 — pale mustard glow
-    "#f59e0b", // secondary-500 — amber
-    "#fbbf24", // secondary-400 — amber-yellow
-    "#fde047", // secondary-300 — yellow
+    "#7c3aed", // primary-500 — deep mustard
+    "#8b5cf6", // primary-400 — mustard
+    "#c4b5fd", // primary-300 — pale mustard glow
+    "#5b6470", // secondary-500 — amber
+    "#7d8590", // secondary-400 — amber-yellow
+    "#9aa3b0", // secondary-300 — yellow
     "#06b6d4", // accent-500 — cyan
     "#22d3ee", // accent-400 — cyan glow
     "#67e8f9", // accent-300 — light cyan glow

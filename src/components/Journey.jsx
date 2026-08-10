@@ -12,7 +12,7 @@ function JourneyCard({ item }) {
             {/* Dot */}
             <span
                 className={`relative z-10 mx-auto mb-4 block w-3 h-3 rounded-full ${done
-                    ? "bg-primary-400 shadow-[0_0_5px_1px_rgba(255,208,102,0.7),0_0_12px_3px_rgba(255,208,102,0.3)]"
+                    ? "bg-primary-400 shadow-[0_0_5px_1px_rgba(var(--primary-400-rgb)/0.7),0_0_12px_3px_rgba(var(--primary-400-rgb)/0.3)]"
                     : "bg-black border border-white/20"
                     }`}
             />

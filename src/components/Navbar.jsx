@@ -63,7 +63,7 @@ function Navbar() {
 
                 <a
                     href="/blog"
-                    className="text-xs tracking-widest uppercase text-primary-400 px-4 py-1.5 rounded border border-primary-400/30 bg-primary-400/6 hover:bg-primary-400/10 transition-all duration-200 hover:shadow-[0_0_18px_rgba(255,226,155,0.22)]"
+                    className="text-xs tracking-widest uppercase text-primary-400 px-4 py-1.5 rounded border border-primary-400/30 bg-primary-400/6 hover:bg-primary-400/10 transition-all duration-200 hover:shadow-[0_0_18px_rgba(var(--primary-300-rgb)/0.22)]"
                 >
                     Blog
                 </a>
