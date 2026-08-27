@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"
 
-function Reveal({ children, className = "", delay = 0 }) {
+function Reveal({ children, className = "", delay = 0, as: Tag = "div" }) {
     const ref = useRef(null)
     const [visible, setVisible] = useState(false)
 
@@ -15,20 +15,20 @@ function Reveal({ children, className = "", delay = 0 }) {
                     observer.disconnect()
                 }
             },
-            { threshold: 0.15 }
+            { threshold: 0.1 }
         )
         observer.observe(el)
         return () => observer.disconnect()
     }, [])
 
     return (
-        <div
+        <Tag
             ref={ref}
             className={`reveal ${visible ? "is-visible" : ""} ${className}`}
-            style={{ transitionDelay: visible ? `${delay}ms` : "0ms"}}
+            style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
         >
             {children}
-        </div>
+        </Tag>
     )
 }
 

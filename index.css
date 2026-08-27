@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ============================================================
+   PALETA — se conservan los nombres de token originales para que
+   las clases de Tailwind (text-primary-400, bg-accent-400/10...)
+   y ProjectModal.jsx sigan funcionando sin tocarlos.
+   ============================================================ */
 @theme {
     --color-primary-300: #c4b5fd;
     --color-primary-400: #a78bfa;
@@ -17,69 +22,63 @@
     --color-accent-amber-400: #fb923c;
     --color-accent-amber-500: #ea580c;
 
-    --color-highlight-pink: #ff5fa7;
-    --color-highlight-blue: #4da3ff;
-
     --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
     --font-digital: "Digital7", "JetBrains Mono", ui-monospace, monospace;
 }
 
-/* RGB triplets mirroring the palette above, for glow/shadow effects that
-   need a variable alpha (rgba/backdrop). Keeping these here means changing
-   the palette is a one-file edit — nobody has to hunt for hardcoded rgba()
-   values in components again. Update these whenever the hex values above
-   change. */
 :root {
+    /* Tripletas RGB de la paleta, para glows con alpha variable.
+       Si cambias los hex de arriba, actualiza estos. */
     --primary-300-rgb: 196 181 253;
     --primary-400-rgb: 167 139 250;
     --primary-500-rgb: 124 58 237;
-
-    --secondary-300-rgb: 156 163 175;
-    --secondary-400-rgb: 107 114 128;
-    --secondary-500-rgb: 75 85 99;
 
     --accent-300-rgb: 249 168 212;
     --accent-400-rgb: 244 114 182;
     --accent-500-rgb: 219 39 119;
 
-    --accent-amber-300-rgb: 253 186 116;
     --accent-amber-400-rgb: 251 146 60;
-    --accent-amber-500-rgb: 234 88 12;
 
-    --sunset-navbar: #a78bfa;
-    --sunset-hero: #c084fc;
-    --sunset-now: #f472b6;
-    --sunset-skills: #fb7185;
-    --sunset-projects: #fb923c;
-    --sunset-journey: #f59e0b;
-    --sunset-footer: #ea580c;
+    /* Escala sunset. Cada sección toma un color sólido de aquí, así la
+       página avanza por el gradiente sin repetir el efecto en cada
+       encabezado. */
+    --s-now: #f472b6;
+    --s-work: #fb923c;
+    --s-exp: #f59e0b;
+    --s-talk: #a78bfa;
+
+    /* Texto */
+    --txt: #f0eff2;
+    --mut: rgba(240, 239, 242, 0.62);
+    --dim: rgba(240, 239, 242, 0.44);
+    --faint: rgba(255, 255, 255, 0.1);
+
+    /* Una sola escala de radios */
+    --r-lg: 18px;
+    --r: 12px;
+    --r-sm: 9px;
+
+    /* Una sola escala de espacio */
+    --s1: 6px;
+    --s2: 10px;
+    --s3: 16px;
+    --s4: 24px;
+    --s5: 36px;
+
+    --pad-x: clamp(20px, 5vw, 72px);
+    --sec-y: clamp(48px, 6vw, 80px);
+    --gap: clamp(16px, 2vw, 22px);
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.page-sunset-wash {
-    background: linear-gradient(
-        180deg,
-        var(--sunset-navbar) 0%,
-        var(--sunset-hero) 8.3%,
-        var(--sunset-now) 16.7%,
-        var(--sunset-skills) 25%,
-        var(--sunset-projects) 33.3%,
-        var(--sunset-journey) 41.7%,
-        var(--sunset-footer) 50%,
-        var(--sunset-journey) 58.3%,
-        var(--sunset-projects) 66.7%,
-        var(--sunset-skills) 75%,
-        var(--sunset-now) 83.3%,
-        var(--sunset-hero) 91.7%,
-        var(--sunset-navbar) 100%
-    );
-    opacity: 0.00;
-}
-
+/* Digital7 solo existe como .ttf en public/fonts. Conviértelo a woff2
+   y descomenta la primera línea: pesa ~70% menos. */
 @font-face {
     font-family: "Digital7";
-    src: url("/fonts/Digital7Mono.woff2") format("woff2"),
-         url("/fonts/Digital7Mono.ttf") format("truetype");
+    src: /* url("/fonts/Digital7Mono.woff2") format("woff2"), */
+        url("/fonts/Digital7Mono.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -89,134 +88,201 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #101319;
-    color: #e8e8e8;
-    font-family: var(--font-sans);
-}
-
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
     scrollbar-color: rgba(var(--primary-400-rgb) / 0.3) rgba(0, 0, 0, 0.3);
     scrollbar-width: thin;
+}
+
+body {
+    margin: 0;
+    background: #06070a;
+    color: var(--txt);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+::selection {
+    background: rgba(var(--primary-400-rgb) / 0.3);
+}
+
+section[id],
+header[id] {
+    scroll-margin-top: 78px;
 }
 
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
-
 ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.3);
 }
-
 ::-webkit-scrollbar-thumb {
     background: rgba(var(--primary-400-rgb) / 0.3);
     border-radius: 999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(var(--primary-400-rgb) / 0.5);
 }
 
-@layer components {
-    .social-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 9999px;
-        border: 0.5px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255, 255, 255, 0.4);
-        transition: all 0.2s;
-    }
-
-    .social-btn:hover {
-        color: rgba(255, 255, 255, 1);
-        border-color: rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .brand-grad {
-        background: linear-gradient(135deg, var(--color-secondary-300), var(--color-primary-500));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: inline-block;
-    }
-
-    .warm-grad {
-        background: linear-gradient(135deg, var(--color-secondary-300) 0%, var(--color-primary-400) 55%, var(--color-primary-500) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: inline-block;
-    }
-
-    .cool-grad {
-        background: linear-gradient(135deg, var(--color-accent-300), var(--color-accent-500));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: inline-block;
-    }
-
-    .glow-card {
-        transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
-    }
-
-    .glow-card:hover {
-        box-shadow: 0 0 26px rgba(var(--primary-300-rgb) / 0.16), 0 0 60px rgba(var(--primary-300-rgb) / 0.06);
-        transform: translateY(-3px);
-    }
-
-    .glow-text {
-        text-shadow: 0 0 14px rgba(var(--primary-300-rgb) / 0.35);
-    }
-
-    .clock-digits {
-        font-family: var(--font-digital);
-        letter-spacing: 0.04em;
-    }
+/* ============================================================
+   FONDO
+   ============================================================ */
+#bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
 }
 
-@keyframes emberPulse {
-    0%, 100% {
-        box-shadow: 0 0 26px rgba(var(--primary-300-rgb) / 0.14), 0 0 55px rgba(var(--primary-300-rgb) / 0.05);
-    }
-    50% {
-        box-shadow: 0 0 36px rgba(var(--primary-300-rgb) / 0.2), 0 0 80px rgba(var(--primary-300-rgb) / 0.08);
-    }
+.bg-wash {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.45;
+}
+.bg-wash.w1 {
+    width: 64vw;
+    height: 64vw;
+    left: -16vw;
+    top: -20vh;
+    background: rgba(var(--primary-500-rgb) / 0.22);
+}
+.bg-wash.w2 {
+    width: 52vw;
+    height: 52vw;
+    right: -14vw;
+    top: 26vh;
+    background: rgba(var(--accent-400-rgb) / 0.12);
+}
+.bg-wash.w3 {
+    width: 58vw;
+    height: 58vw;
+    left: 26vw;
+    bottom: -26vh;
+    background: rgba(var(--accent-amber-400-rgb) / 0.1);
 }
 
-.ember-breathe {
-    animation: emberPulse 6s ease-in-out infinite;
+.bg-veil {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(130% 92% at 50% 38%, transparent 44%, rgba(4, 4, 8, 0.84) 100%);
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+.bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+.bg-grain {
+    position: absolute;
+    inset: -50%;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.grid-pattern-animated {
-    background-color: #2a2a2a;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridMove 2.5s steps(40, end) infinite;
+/* ============================================================
+   SUPERFICIE — una sola. Antes había cinco tratamientos
+   distintos repartidos por los componentes.
+   ============================================================ */
+/* Sin fondo: el contenido se apoya directo sobre la retícula.
+   Se conserva border-radius porque las imágenes de proyecto usan
+   overflow:hidden y se recortan contra él. */
+.card {
+    position: relative;
+    border-radius: var(--r-lg);
+    background: rgba(16, 17, 26, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    box-shadow: 0 22px 48px -30px rgba(0, 0, 0, 0.9);
+    transition:
+        transform 0.4s var(--ease),
+        border-color 0.4s var(--ease),
+        box-shadow 0.4s var(--ease);
 }
 
-@keyframes sunsetShift {
-    0%, 100% {
+/* El hero se queda abierto: es la única tarjeta sin texto pequeño
+   de color, y es donde la retícula tiene que respirar. */
+.hero-card {
+    background: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.card-tap {
+    cursor: pointer;
+}
+
+/* Sin fondo ni borde, el hover perdía toda su señal. Queda el
+   desplazamiento, el zoom de la imagen y la flecha de "Open project",
+   más un borde apenas insinuado para marcar el área activa. */
+.card-tap:hover {
+    transform: translateY(-3px);
+    border-color: rgba(var(--primary-400-rgb) / 0.32);
+    box-shadow:
+        0 28px 58px -28px rgba(0, 0, 0, 0.95),
+        0 0 32px -12px rgba(var(--primary-400-rgb) / 0.28);
+}
+
+/* El modal sí necesita superficie: flota encima del contenido y tiene
+   que separarse de él. */
+.card.modal-card {
+    background: #111318;
+    border-color: rgba(255, 255, 255, 0.09);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 40px 90px -30px rgba(0, 0, 0, 0.95);
+}
+
+/* El gradiente sunset. Tres usos de texto en toda la página: el punto
+   de "Pedro.", la línea de rol y los dígitos del reloj. */
+.grad {
+    background: linear-gradient(
+        100deg,
+        var(--color-primary-400) 0%,
+        var(--color-accent-400) 44%,
+        var(--color-accent-amber-400) 76%,
+        var(--color-primary-400) 100%
+    );
+    background-size: 240% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    animation: gradShift 12s ease-in-out infinite;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+@keyframes gradShift {
+    0%,
+    100% {
         background-position: 0% 50%;
     }
     50% {
@@ -224,42 +290,958 @@ html {
     }
 }
 
-.sunset-grad {
-    background: linear-gradient(90deg, var(--color-primary-400), #f472b6, #fb923c, #f472b6, var(--color-primary-400));
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
-    animation: sunsetShift 6s ease-in-out infinite;
+@keyframes pingDot {
+    75%,
+    100% {
+        transform: scale(2.6);
+        opacity: 0;
+    }
 }
 
-.sunset-frame {
+@keyframes breathe {
+    0%,
+    100% {
+        box-shadow:
+            0 0 26px rgba(var(--primary-300-rgb) / 0.13),
+            0 0 56px rgba(var(--primary-300-rgb) / 0.05);
+    }
+    50% {
+        box-shadow:
+            0 0 36px rgba(var(--primary-300-rgb) / 0.2),
+            0 0 82px rgba(var(--primary-300-rgb) / 0.08);
+    }
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.section {
+    padding: var(--sec-y) var(--pad-x);
+}
+
+.inner {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.sec-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--s4);
+    flex-wrap: wrap;
+    margin-bottom: var(--s5);
+}
+
+.sec-head h2 {
+    font-size: clamp(1.55rem, 3.2vw, 2.1rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin: var(--s1) 0 0;
+    line-height: 1.15;
+}
+
+/* ============================================================
+   BOTONES Y TAGS
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: 11px 19px;
+    border-radius: var(--r);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--faint);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--mut);
+    transition: all 0.25s var(--ease);
+}
+
+.btn:hover {
+    color: var(--txt);
+    border-color: rgba(255, 255, 255, 0.26);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    color: #100c18;
+    border-color: transparent;
+    font-weight: 600;
+    background: linear-gradient(
+        100deg,
+        var(--color-primary-400),
+        var(--color-accent-400) 66%,
+        var(--color-accent-amber-400)
+    );
+
+    /* background-origin vale padding-box por defecto, pero background-clip
+       es border-box. El gradiente se dimensiona sobre la caja de padding y
+       se pinta sobre la de borde, así que el 1px del borde transparente
+       (heredado de .btn) se rellenaba REPITIENDO el mosaico: la franja
+       izquierda mostraba el ámbar del final del gradiente. Con border-box
+       el gradiente cubre el borde y no hay repetición. */
+    background-origin: border-box;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.07);
+    box-shadow: 0 14px 32px -14px rgba(var(--primary-400-rgb) / 0.6);
+    background-origin: border-box;
+}
+
+.btn svg,
+.soc svg,
+.foot-soc svg {
+    width: 14px;
+    height: 14px;
+    flex: none;
+}
+
+.tags {
+    display: flex;
+    gap: var(--s1);
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid;
+    letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.7s var(--ease),
+        transform 0.7s var(--ease);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    padding: 0 var(--pad-x);
+    height: 64px;
+
+    /* Arriba no hay barra: el fondo llega hasta el borde de la ventana. */
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition:
+        background 0.3s var(--ease),
+        border-color 0.3s var(--ease);
+}
+
+/* En cuanto el contenido empieza a pasar por debajo, entra el velo.
+   Tiene que ser OSCURO, no blanco: sobre la captura de Phlox, que es casi
+   blanca, un navbar transparente deja los links en 1.04:1 — ilegible.
+   Con este velo suben a 7.04:1. El blur solo difumina, no oscurece, así
+   que por sí solo no resuelve nada. */
+.nav[data-scrolled="true"] {
+    background: rgba(6, 7, 10, 0.72);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+.nav .nav-prog {
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+}
+.nav[data-scrolled="true"] .nav-prog {
+    opacity: 1;
+}
+
+.nav-prog {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1.5px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary-400),
+        var(--color-accent-400),
+        var(--color-accent-amber-400)
+    );
+}
+
+.brand {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+}
+.brand span {
+    color: var(--color-primary-400);
+}
+
+.navlinks {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
 }
 
-.sunset-frame::before {
+.navlinks a {
+    position: relative;
+    z-index: 1;
+    padding: 8px 13px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    transition: color 0.25s var(--ease);
+}
+.navlinks a[aria-current="true"] {
+    color: var(--txt);
+}
+.navlinks a:hover {
+    color: var(--mut);
+}
+
+.nav-ind {
+    position: absolute;
+    z-index: 0;
+    height: 30px;
+    top: 50%;
+    margin-top: -15px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+        left 0.38s var(--ease),
+        width 0.38s var(--ease),
+        opacity 0.3s;
+}
+
+.nav-cta {
+    color: var(--color-primary-400) !important;
+    border: 1px solid rgba(var(--primary-400-rgb) / 0.3);
+    background: rgba(var(--primary-400-rgb) / 0.07);
+    border-radius: var(--r-sm);
+    padding: 8px 15px !important;
+}
+.nav-cta:hover {
+    background: rgba(var(--primary-400-rgb) / 0.13);
+    box-shadow: 0 0 20px -6px rgba(var(--primary-400-rgb) / 0.55);
+}
+
+.burger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--faint);
+    align-items: center;
+    justify-content: center;
+    background: none;
+    cursor: pointer;
+}
+.burger span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--mut);
+    box-shadow:
+        0 -5px 0 var(--mut),
+        0 5px 0 var(--mut);
+}
+
+@media (max-width: 900px) {
+    .navlinks {
+        position: fixed;
+        inset: 64px 0 auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px var(--pad-x) 20px;
+        background: rgba(10, 11, 16, 0.97);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        transform: translateY(-125%);
+        transition: transform 0.4s var(--ease);
+    }
+    .navlinks[data-open="true"] {
+        transform: none;
+    }
+    .navlinks a {
+        padding: 15px 4px;
+        font-size: 12px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-ind {
+        display: none;
+    }
+    .nav-cta {
+        margin-top: var(--s3);
+        text-align: center;
+        border-radius: var(--r-sm);
+    }
+    .burger {
+        display: flex;
+    }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+    padding: clamp(40px, 6vw, 68px) var(--pad-x) clamp(24px, 3vw, 36px);
+    display: flex;
+    align-items: center;
+    min-height: min(84vh, 760px);
+}
+
+.hero-card {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(24px, 3.4vw, 46px);
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: clamp(26px, 4.5vw, 60px);
+    align-items: center;
+
+}
+
+.pill-live {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: 6px 13px 6px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    background: rgba(192, 132, 252, 0.09);
+    margin-bottom: var(--s5);
+}
+.pill-live i {
+    position: relative;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c084fc;
+}
+.pill-live i::before {
     content: "";
     position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(120deg, var(--color-primary-400), #f472b6, #fb923c, var(--color-primary-400));
-    background-size: 300% 300%;
-    animation: sunsetShift 8s ease-in-out infinite;
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    inset: 0;
+    border-radius: 50%;
+    background: #c084fc;
+    animation: pingDot 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.pill-live span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #dcbcfe;
+}
+
+.hello {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin: 0 0 var(--s2);
+}
+
+.hero h1 {
+    font-size: clamp(2.7rem, 6.4vw, 4.1rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0 0 var(--s1);
+}
+
+.role {
+    font-family: var(--font-mono);
+    font-size: clamp(10.5px, 1.4vw, 12.5px);
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0 0 var(--s4);
+}
+
+.bio {
+    color: var(--mut);
+    max-width: 44ch;
+    margin: 0 0 var(--s5);
+    line-height: 1.75;
+}
+
+.cta-row {
+    display: flex;
+    gap: var(--s2);
+    flex-wrap: wrap;
+    margin-bottom: var(--s4);
+}
+
+.socials {
+    display: flex;
+    gap: var(--s1);
+    flex-wrap: wrap;
+}
+
+.soc {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: 8px 13px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--faint);
+    background: rgba(255, 255, 255, 0.03);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    transition: all 0.22s var(--ease);
+}
+.soc:hover {
+    color: var(--txt);
+    transform: translateY(-2px);
+    border-color: var(--sc, rgba(255, 255, 255, 0.3));
+    box-shadow: 0 10px 24px -14px var(--sc, rgba(255, 255, 255, 0.4));
+}
+
+.portrait {
+    position: relative;
+    justify-self: center;
+    width: min(232px, 68vw);
+}
+.portrait-frame {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    right: -9px;
+    bottom: -9px;
+    border-radius: calc(var(--r-lg) + 4px);
+    padding: 1.5px;
+    background: linear-gradient(
+        130deg,
+        var(--color-primary-400),
+        var(--color-accent-400) 46%,
+        var(--color-accent-amber-400) 82%,
+        var(--color-primary-400)
+    );
+    background-size: 220% 220%;
+    animation: gradShift 14s ease-in-out infinite;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+
+    /* Mismo bug que en .btn-primary, y aquí es peor: la máscara deja
+       visible sólo el anillo de 1.5px, que era justo la zona rellenada
+       por repetición. El marco entero mostraba colores equivocados. */
+    background-origin: border-box;
+}
+.portrait-img {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    animation: breathe 6s ease-in-out infinite;
+}
+.portrait-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.portrait-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(8, 8, 14, 0.6));
 }
 
-@keyframes gridMove {
-    from {
-        background-position: 0px 0px;
-    }
+.learning {
+    position: absolute;
+    left: -30px;
+    bottom: -14px;
+    padding: 9px 14px;
+    border-radius: var(--r);
+    background: rgba(12, 12, 18, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 14px 32px -16px rgba(0, 0, 0, 0.9);
+}
+.learning .k {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+.learning .v {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-accent-400);
+    margin-top: 3px;
+}
 
-    to {
-        background-position: 40px 40px;
+@media (max-width: 860px) {
+    .hero-card {
+        grid-template-columns: 1fr;
+    }
+    .portrait {
+        margin: var(--s3) 0 var(--s5);
+        justify-self: start;
+    }
+    .learning {
+        left: -14px;
+    }
+}
+
+/* ============================================================
+   NOW — reloj + destacado
+   ============================================================ */
+.now-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: var(--gap);
+}
+
+.clock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s5);
+    text-align: center;
+    padding: clamp(24px, 3vw, 34px) var(--s4);
+}
+
+.clock-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(3px, 0.8vw, 8px);
+}
+
+.tb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tb .n {
+    font-family: var(--font-digital);
+    /* Digital7 sólo trae un peso. Pedir 700 hacía que el navegador
+       sintetizara la negrita engordando los trazos, y en una fuente de
+       siete segmentos eso emborrona los dígitos. */
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5.4vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 20px rgba(var(--primary-300-rgb) / 0.35);
+}
+.tb .u {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: var(--s2);
+}
+
+.colon {
+    font-family: var(--font-digital);
+    font-weight: 400;
+    color: rgba(240, 239, 242, 0.24);
+    font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+    line-height: 1;
+    margin-top: 0.08em;
+}
+
+.clock-foot {
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.7;
+    max-width: 32ch;
+    margin: 0;
+}
+.clock-foot b {
+    color: var(--color-accent-400);
+    font-weight: 500;
+}
+
+.spot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.spot-img {
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+}
+.spot-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s var(--ease);
+}
+.spot:hover .spot-img img {
+    transform: scale(1.05);
+}
+.spot-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 42%, rgba(10, 10, 16, 0.75));
+}
+
+.badge {
+    position: absolute;
+    z-index: 2;
+    top: var(--s3);
+    left: var(--s3);
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--txt);
+    background: rgba(12, 10, 18, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
+}
+
+.spot-body {
+    position: relative;
+    z-index: 1;
+    padding: clamp(20px, 2.6vw, 30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--s2);
+}
+.spot-body h3 {
+    font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+.spot-body p {
+    margin: 0;
+    color: var(--mut);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: var(--s3);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+.meta .role-s {
+    color: var(--color-primary-400);
+}
+
+.cue {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    margin-top: var(--s1);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    transition:
+        gap 0.3s var(--ease),
+        color 0.3s var(--ease);
+}
+.cue svg {
+    width: 13px;
+    height: 13px;
+}
+.spot:hover .cue,
+.pcard:hover .cue {
+    gap: 15px;
+    color: var(--txt);
+}
+
+@media (max-width: 960px) {
+    .now-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .spot {
+        grid-template-columns: 1fr;
+    }
+    .spot-img {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+    }
+    .spot-img::after {
+        background: linear-gradient(0deg, rgba(10, 10, 16, 0.85), transparent 62%);
+    }
+}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.proj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: var(--gap);
+}
+
+.pcard {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+}
+.pcard-img {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0e1017;
+}
+.pcard-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+}
+.pcard:hover .pcard-img img {
+    transform: scale(1.05);
+}
+.pcard-body {
+    padding: clamp(16px, 1.9vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+    flex: 1;
+}
+.pcard-body h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+.pcard-body p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--mut);
+    line-height: 1.65;
+    flex: 1;
+}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.jobs {
+    padding: clamp(6px, 1vw, 12px) clamp(18px, 2.6vw, 30px) clamp(10px, 1.4vw, 18px);
+}
+
+.job {
+    display: grid;
+    grid-template-columns: 126px minmax(0, 1fr) auto;
+    gap: var(--s4);
+    align-items: baseline;
+    padding: var(--s4) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.job:last-child {
+    border-bottom: 0;
+}
+.job .when {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    color: var(--dim);
+    white-space: nowrap;
+}
+.job h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+.job .what {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary-400);
+    text-align: right;
+}
+.job .detail {
+    grid-column: 2 / -1;
+    margin: var(--s1) 0 0;
+    font-size: 13.5px;
+    color: var(--dim);
+    line-height: 1.7;
+    max-width: 62ch;
+}
+
+@media (max-width: 680px) {
+    .job {
+        grid-template-columns: 1fr;
+        gap: var(--s1);
+        padding: var(--s3) 0;
+    }
+    .job .what {
+        text-align: left;
+    }
+    .job .detail {
+        grid-column: 1;
+    }
+}
+
+/* ============================================================
+   CONTACT + FOOTER
+   ============================================================ */
+.contact {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    padding: clamp(30px, 4.4vw, 50px) clamp(22px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s3);
+}
+.contact h2 {
+    font-size: clamp(1.8rem, 4.4vw, 2.7rem);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    margin: 0;
+    line-height: 1.1;
+}
+.contact p {
+    margin: 0;
+    max-width: 48ch;
+    color: var(--mut);
+    line-height: 1.75;
+}
+
+.mailrow {
+    display: flex;
+    gap: var(--s2);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--s1);
+}
+
+.tz {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    margin-top: var(--s1);
+}
+.tz i {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 9px rgba(74, 222, 128, 0.7);
+}
+
+.foot {
+    padding: var(--s4) var(--pad-x);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s3);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+
+.foot-soc {
+    display: flex;
+    gap: var(--s1);
+}
+.foot-soc a {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--r-sm);
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--faint);
+    transition: all 0.22s var(--ease);
+}
+.foot-soc a:hover {
+    color: var(--color-accent-amber-400);
+    border-color: rgba(var(--accent-amber-400-rgb) / 0.45);
+    transform: translateY(-2px);
+}
+
+.top-link:hover {
+    color: var(--txt);
+}
+
+/* ============================================================
+   ACCESIBILIDAD — sin la regla de .reveal, quien tenga
+   reduced-motion activado ve la página en blanco debajo del hero:
+   la transición se anula pero el opacity:0 inicial se queda.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }

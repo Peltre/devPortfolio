@@ -66,8 +66,9 @@ function ProjectModal({ project, onClose }) {
         >
             {/* Main modal - text focused */}
             <div
-                className="relative w-full max-w-lg border border-white/8 rounded-2xl overflow-hidden shadow-2xl bg-[#111] max-h-[85vh] flex flex-col"
+                className="card modal-card relative w-full max-w-lg overflow-hidden max-h-[85vh] flex flex-col"
                 style={{
+                    background: "#111318",
                     opacity: visible ? 1 : 0,
                     transform: visible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.97)",
                     transition: "opacity 0.26s ease, transform 0.26s ease",

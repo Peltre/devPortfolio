@@ -1,37 +1,43 @@
 import { useNavigate } from "react-router-dom"
-import { ArrowLeft } from "lucide-react"
-
 
 function Blog() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     return (
-        <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center relative overflow-hidden">
-            {/* Fondo decorativo */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[32px_32px]" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(251,146,60,0.05)_0%,transparent_70%)]" />
+        <div
+            style={{
+                minHeight: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "var(--pad-x)",
+                position: "relative",
+                overflow: "hidden",
+            }}
+        >
+            <div id="bg" aria-hidden="true">
+                <div className="bg-wash w1" />
+                <div className="bg-wash w3" />
+                <div className="bg-veil" />
+                <div className="bg-grain" />
+            </div>
 
-            <div className="relative flex flex-col items-center gap-6 text-center px-8">
-                <p className="text-xs tracking-widest uppercase text-white/20 font-mono">
-                    coming soon
+            <div
+                className="card contact"
+                style={{ position: "relative", zIndex: 1, maxWidth: "560px" }}
+            >
+                <p className="eyebrow" style={{ color: "var(--s-talk)" }}>
+                    Coming soon
                 </p>
-
-                <h1 className="text-5xl md:text-5xl font-light text-white/90">
-                    Work in <span className="brand-grad uppercase font-bold">Progess</span>
-                </h1>
-
-                <p className="text-sm text-white/35 max-w-sm leading-relaxed">
-                    The blog is being built as we speak! In the meantime, feel free to check out my projects or get in touch.
+                <h2>
+                    Work in <span className="grad">progress</span>
+                </h2>
+                <p>
+                    The blog is being built as we speak. In the meantime, feel free to check out my
+                    projects or get in touch.
                 </p>
-
-                <div className="w-16 h-px bg-primary-400/20 my-2" />
-
-                <button
-                    onClick={() => navigate("/")}
-                    className="flex items-center gap-2 text-xs tracking-widest uppercase text-white/40 border border-white/10 px-5 py-2.5 rounded-lg hover:text-white hover:border-white/30 transition-all duration-200"
-                >
-                    <ArrowLeft size={14} />
-                    Back to portfolio
+                <button className="btn" onClick={() => navigate("/")} style={{ marginTop: "var(--s2)" }}>
+                    ← Back to portfolio
                 </button>
             </div>
         </div>

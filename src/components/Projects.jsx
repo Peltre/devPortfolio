@@ -1,90 +1,85 @@
-import { projects } from "../data/projects"
-import ProjectModal from "./ProjectModal"
 import { useState } from "react"
+import { projects } from "../data/projects"
 import { techColors } from "../utils/techColors"
+import ProjectModal from "./ProjectModal"
 import Reveal from "./Reveal"
+import { ArrowRight } from "./Icons"
 
-function ProjectCard({ project, onClick }) {
-
+function ProjectCard({ project, onOpen }) {
     return (
-        <div
-            onClick={onClick}
-            className="glow-card group relative flex flex-col rounded-2xl border border-white/8 bg-white/2 overflow-hidden hover:border-primary-400/30 hover:cursor-pointer">
-            {/* Image part */}
-            <div className="relative h-56 overflow-hidden rounded-t-2xl">
-                <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
-                />
-                {/* Overlay over img */}
-                <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/20 to-transparent" />
+        <article
+            className="card card-tap pcard"
+            role="button"
+            tabIndex={0}
+            aria-label={`Abrir detalles de ${project.title}`}
+            onClick={() => onOpen(project)}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    onOpen(project)
+                }
+            }}
+        >
+            <div className="pcard-img">
+                <img src={project.images[0]} alt={`Captura de ${project.title}`} loading="lazy" />
+            </div>
 
-                {/* Tags over img */}
-                <div className="absolute bottom-3 left-3 flex gap-2 flex-wrap">
-                    {project.tags.map(tag => {
+            <div className="pcard-body">
+                <div className="meta">
+                    <span className="role-s">{project.role}</span>
+                    <span>{project.date}</span>
+                </div>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                {/* Los tags bajan al cuerpo: encima de la imagen competían con
+                    el screenshot y en el de Phlox eran ilegibles. */}
+                <div className="tags">
+                    {project.tags.map((tag) => {
                         const color = techColors[tag] || "rgba(255,255,255,0.4)"
                         return (
                             <span
                                 key={tag}
-                                className="text-xs font-mono px-2 py-0.5 rounded-full border"
-                                style={{
-                                    color,
-                                    background: `${color}12`,
-                                    borderColor: `${color}30`,
-                                }}
+                                className="tag"
+                                style={{ color, background: `${color}14`, borderColor: `${color}38` }}
                             >
                                 {tag}
                             </span>
                         )
                     })}
                 </div>
+                <span className="cue">
+                    Open project <ArrowRight width={13} height={13} />
+                </span>
             </div>
-            {/* Basic project info part */}
-            <div className="flex flex-col gap-2 p-5 bg-black/70">
-                <div className="flex items-center justify-between">
-                    <h3 className="text-white/90 font-medium text-lg">{project.title}</h3>
-                    <span className="text-xs text-white/25 font-mono">{project.date}</span>
-                </div>
-                {/* role */}
-                <p className="text-xs text-primary-400/70 tracking-widest uppercase font-mono">{project.role}</p>
-                {/* description */}
-                <p className="text-sm text-white/40 leading-relaxed">{project.description}</p>
-            </div>
-        </div>
+        </article>
     )
-
 }
 
 function Projects() {
-    const [selectedProject, setSelectedProject] = useState(null)
+    const [selected, setSelected] = useState(null)
 
     return (
-        <section id="proyectos" className="px-8 md:px-20 py-10 scroll-mt-20">
-            {/* Header */}
-            <div className="mb-12">
-                <p className="text-xs tracking-widest uppercase font-mono mb-2" style={{ color: "var(--sunset-projects)" }}> 03 / Projects</p>
-                <h2 className="text-3xl font-light text-white/90">Things I've built</h2>
-            </div>
-            {/* Card grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project, i) => (
-                    <Reveal key={project.id} delay={(i % 3) * 80}>
-                        <ProjectCard
-                            project={project}
-                            onClick={() => setSelectedProject(project)}
-                        />
-                    </Reveal>
-                ))}
+        <section className="section" id="work">
+            <div className="inner">
+                <div className="sec-head">
+                    <div>
+                        <p className="eyebrow" style={{ color: "var(--s-work)" }}>
+                            Projects
+                        </p>
+                        <h2>Things I've built</h2>
+                    </div>
+                </div>
+
+                <div className="proj-grid">
+                    {projects.map((project, i) => (
+                        <Reveal key={project.id} delay={(i % 3) * 90}>
+                            <ProjectCard project={project} onOpen={setSelected} />
+                        </Reveal>
+                    ))}
+                </div>
             </div>
 
-            {/* Project info modal */}
-            {selectedProject && (
-                <ProjectModal
-                    project={selectedProject}
-                    onClose={() => setSelectedProject(null)}
-                />
-            )}
+            {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
         </section>
     )
 }

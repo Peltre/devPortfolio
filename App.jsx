@@ -1,35 +1,27 @@
-import MCover from "./src/components/MCover"
+import LiveGrid from "./src/components/LiveGrid"
 import Navbar from "./src/components/Navbar"
+import Hero from "./src/components/Hero"
+import Now from "./src/components/Now"
 import Projects from "./src/components/Projects"
-import Skills from "./src/components/Skills"
+import Experience from "./src/components/Experience"
+import Contact from "./src/components/Contact"
 import Footer from "./src/components/Footer"
-import StatusRow from "./src/components/StatusRow"
-import Journey from "./src/components/Journey"
-
-
 
 function App() {
     return (
-        <div className="min-h-screen bg-black relative">
-            {/* Grid bg */}
-            <div
-                className="grid-pattern-animated absolute inset-0 pointer-events-none"
-
-            />
-            {/* Vertical sunset wash - travels from navbar to footer */}
-            <div className="page-sunset-wash absolute inset-0 pointer-events-none" />
-            <div className="relative z-10 bg-black/15">
+        <>
+            <LiveGrid />
+            <div style={{ position: "relative", zIndex: 1 }}>
                 <Navbar />
-                <MCover />
-                <StatusRow />
-                <Skills />
+                <Hero />
+                <Now />
                 <Projects />
-                <Journey />
+                <Experience />
+                <Contact />
                 <Footer />
             </div>
-        </div>
+        </>
     )
-
 }
 
 export default App
