@@ -22,6 +22,7 @@ function ProjectCard({ project, onOpen }) {
         >
             <div className="pcard-img">
                 <img src={project.images[0]} alt={`Captura de ${project.title}`} loading="lazy" />
+                <span className="pcard-peek">Ver proyecto</span>
             </div>
 
             <div className="pcard-body">

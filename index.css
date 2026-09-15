@@ -1074,6 +1074,317 @@ header[id] {
 }
 
 /* ============================================================
+   HOVER DE TARJETA — cortina
+   ============================================================ */
+.pcard-img {
+    filter: saturate(0.55) brightness(0.8);
+    transition: filter 0.45s var(--ease);
+}
+
+.pcard-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 7, 10, 0.1), rgba(6, 7, 10, 0.75));
+    transition: opacity 0.45s var(--ease);
+}
+
+.pcard:hover .pcard-img,
+.pcard:focus-visible .pcard-img {
+    filter: none;
+}
+
+.pcard:hover .pcard-img::after,
+.pcard:focus-visible .pcard-img::after {
+    opacity: 0;
+}
+
+.pcard-peek {
+    position: absolute;
+    z-index: 2;
+    left: 14px;
+    bottom: 14px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: rgba(6, 7, 10, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.35s var(--ease);
+}
+
+.pcard:hover .pcard-peek,
+.pcard:focus-visible .pcard-peek {
+    opacity: 1;
+    transform: none;
+}
+
+/* ============================================================
+   MODAL DE PROYECTO — split, altura fija
+   ============================================================ */
+.pm-scrim {
+    position: fixed;
+    inset: 0;
+    /* por encima del navbar (60): si no, la barra se queda sobre el blur */
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    opacity: 0;
+    background: rgba(4, 4, 8, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition:
+        opacity 0.3s var(--ease),
+        background 0.34s var(--ease),
+        backdrop-filter 0.34s var(--ease);
+}
+
+.pm-scrim.on {
+    opacity: 1;
+    background: rgba(4, 4, 8, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* Altura fija: el modal no cambia de tamano entre proyectos */
+.pm-sheet {
+    position: relative;
+    display: flex;
+    width: min(880px, 100%);
+    height: min(540px, 76vh);
+    border-radius: var(--r-lg);
+    background: #0e0f16;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.95);
+    overflow: hidden;
+    transform: scale(0.94);
+    opacity: 0;
+    transition:
+        transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s var(--ease);
+}
+
+.pm-scrim.on .pm-sheet {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.pm-close {
+    position: absolute;
+    z-index: 20;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(6, 7, 10, 0.7);
+    backdrop-filter: blur(8px);
+    display: grid;
+    place-items: center;
+    color: var(--dim);
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+}
+
+.pm-close:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.pm-shot {
+    position: relative;
+    flex: 1.1;
+    min-width: 0;
+    background: #08090d;
+    display: grid;
+    place-items: center;
+}
+
+/* contain: nunca recorta y nunca amplia mas alla del tamano real */
+.pm-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Las capturas de juego son arte de pixel: interpolarlas las emborrona */
+.pm-shot.crisp img {
+    image-rendering: pixelated;
+}
+
+.pm-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(6, 7, 10, 0.75);
+    backdrop-filter: blur(8px);
+    display: grid;
+    place-items: center;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+}
+
+.pm-nav:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(6, 7, 10, 0.9);
+}
+
+.pm-nav.prev {
+    left: 12px;
+}
+.pm-nav.next {
+    right: 12px;
+}
+
+.pm-counter {
+    position: absolute;
+    z-index: 6;
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    background: rgba(6, 7, 10, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    color: var(--mut);
+}
+
+.pm-dots {
+    position: absolute;
+    z-index: 6;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+}
+
+.pm-dots button {
+    width: 5px;
+    height: 4px;
+    border-radius: 2px;
+    border: 0;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.25s var(--ease);
+}
+
+.pm-dots button.on {
+    width: 20px;
+    background: var(--color-primary-400);
+}
+
+.pm-body {
+    flex: 1;
+    min-width: 0;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: hidden;
+}
+
+.pm-role {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-primary-400);
+    margin: 0 0 6px;
+}
+
+.pm-title {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.pm-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--dim);
+    margin: 6px 0 0;
+}
+
+.pm-desc {
+    color: var(--mut);
+    font-size: 13.5px;
+    line-height: 1.7;
+    margin: 0;
+    /* lo único que scrollea: el encabezado, el stack y los botones
+       se quedan fijos. min-height:0 deja que encoja dentro del flex */
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.pm-desc::-webkit-scrollbar {
+    width: 4px;
+}
+.pm-desc::-webkit-scrollbar-thumb {
+    background: rgba(var(--primary-400-rgb) / 0.3);
+    border-radius: 999px;
+}
+.pm-desc::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.pm-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin: 0 0 10px;
+}
+
+.pm-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 820px) {
+    .pm-scrim {
+        padding: 0;
+        align-items: flex-end;
+    }
+    .pm-sheet {
+        flex-direction: column;
+        height: 92vh;
+        border-radius: 20px 20px 0 0;
+    }
+    .pm-shot {
+        flex: none;
+        height: 36vh;
+    }
+    .pm-body {
+        padding: 24px 22px 30px;
+    }
+}
+
+/* ============================================================
    EXPERIENCE
    ============================================================ */
 .jobs {

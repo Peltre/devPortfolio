@@ -6,7 +6,6 @@ import phlox2 from "../assets/projects/phlox2.png"
 import phlox3 from "../assets/projects/phlox3.png"
 import phlox4 from "../assets/projects/phlox4.png"
 import kod1 from "../assets/projects/kod1.png"
-import kod2 from "../assets/projects/kod2.png"
 import kod3 from "../assets/projects/kod3.png"
 
 
@@ -55,6 +54,7 @@ export const projects = [
       kod3,
     ],
     demo: "https://pedr1p.itch.io/knights-of-dango",
+    pixelArt: true,
     tags: ["Unity", "C#", "Aseprite"]
   },
 ]
