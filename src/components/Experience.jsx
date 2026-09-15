@@ -12,7 +12,7 @@ const list = {
 
 const row = {
     hidden: { opacity: 0, y: 16 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 }
 
 function Experience() {
@@ -39,9 +39,18 @@ function Experience() {
                         {experience.map((job) => (
                             <m.div className="job" key={`${job.org}-${job.from}`} variants={row}>
                                 <span className="when">
-                                    {job.to ? `${job.from} — ${job.to}` : job.from}
+                                    {job.current
+                                        ? `${job.from} —`
+                                        : job.to
+                                          ? `${job.from} — ${job.to}`
+                                          : job.from}
                                 </span>
-                                <h3>{job.org}</h3>
+                                <div className="job-org">
+                                    <h3>{job.org}</h3>
+                                    {job.current && (
+                                        <span className="now grad">Present</span>
+                                    )}
+                                </div>
                                 <span className="what">{job.role}</span>
                                 {job.detail && <p className="detail">{job.detail}</p>}
                             </m.div>

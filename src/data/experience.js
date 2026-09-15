@@ -1,35 +1,30 @@
 // Historial laboral. Orden: más reciente primero.
-//
-// from / to : strings, para poder poner "In progress" o dejar `to` vacío
-// role      : puesto, se muestra en mono a la derecha
-// detail    : opcional, una o dos frases sobre qué hiciste ahí
-//
-// OJO: Softtek está descrito como proyecto de industria porque tu propia
-// descripción de Phlox dice "in collaboration with @Softtek". Si fue
-// contratación real, cambia el detail.
+// current: true marca el puesto actual (punto + "Present" en gradiente).
 
 export const experience = [
     {
+        from: "Jul 2026",
+        to: "Present",
+        current: true,
+        org: "Microplus",
+        role: "Automation & BI Engineer",
+        detail:
+            "Build the internal tooling the company runs on: Power BI reporting, Power Apps workflows and bots that take manual processes off people's desks, dropping into code where the low-code tools run out.",
+    },
+    {
         from: "2025",
         to: "2026",
-        org: "Softtek",
-        role: "Scrum Master & Dev",
+        org: "Softtek × Tec de Monterrey",
+        role: "Capstone — Scrum Master & Dev",
         detail:
-            "Industry project. Led the team behind Phlox, wiring their Frida AI, Firebase auth and IoT data into a single project-management board.",
-    },
-    // TODO: reemplazar con datos reales
-    {
-        from: "2024",
-        to: "2025",
-        org: "Empresa",
-        role: "Puesto",
-        detail: "",
+            "Semester-long capstone built in partnership with Softtek, not an internal role. Led the team behind Phlox, wiring their Frida AI, Firebase auth and IoT data into a single project-management board.",
     },
     {
-        from: "2023",
-        to: "2024",
-        org: "Empresa",
-        role: "Puesto",
-        detail: "",
+        // TODO: confirma el año de inicio, lo deduje de una carrera de 4 años
+        from: "2022",
+        to: "Jul 2026",
+        org: "Tecnológico de Monterrey",
+        role: "BS Computer Technology Engineering",
+        detail: "Graduated July 2026.",
     },
 ]

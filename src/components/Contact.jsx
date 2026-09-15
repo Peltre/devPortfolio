@@ -14,7 +14,7 @@ function Contact() {
                         <h2>Let's build something.</h2>
                         <p>
                             I'm looking for a team where I can ship real product and keep learning.
-                            Web, games, or a weird mix of both — I'd like to hear about it.
+                            Web, games, or a weird mix of both.
                         </p>
 
                         <div className="mailrow">

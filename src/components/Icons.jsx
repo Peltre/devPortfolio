@@ -15,3 +15,9 @@ export const Mail = (p) => (
         <path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1Zm1.6 2L12 12.2 19.4 7H4.6ZM4 8.9V17h16V8.9l-8 5.6-8-5.6Z" />
     </svg>
 )
+
+export const Download = (p) => (
+    <svg {...base} {...p} aria-hidden="true">
+        <path d="M13 3v8.2l3.1-3.1 1.4 1.4L12 15l-5.5-5.5 1.4-1.4L11 11.2V3h2ZM5 17h14v2H5v-2Z" />
+    </svg>
+)

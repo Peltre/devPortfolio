@@ -685,13 +685,6 @@ header[id] {
     line-height: 1.75;
 }
 
-.cta-row {
-    display: flex;
-    gap: var(--s2);
-    flex-wrap: wrap;
-    margin-bottom: var(--s4);
-}
-
 .socials {
     display: flex;
     gap: var(--s1);
@@ -717,6 +710,18 @@ header[id] {
     transform: translateY(-2px);
     border-color: var(--sc, rgba(255, 255, 255, 0.3));
     box-shadow: 0 10px 24px -14px var(--sc, rgba(255, 255, 255, 0.4));
+}
+
+.soc-cv {
+    color: var(--color-primary-400);
+    border-color: rgba(var(--primary-400-rgb) / 0.3);
+    background: rgba(var(--primary-400-rgb) / 0.07);
+}
+
+.soc-cv:hover {
+    color: var(--color-primary-400);
+    border-color: rgba(var(--primary-400-rgb) / 0.55);
+    box-shadow: 0 10px 24px -14px rgba(var(--primary-400-rgb) / 0.7);
 }
 
 .portrait {
@@ -1408,6 +1413,24 @@ header[id] {
     letter-spacing: 0.07em;
     color: var(--dim);
     white-space: nowrap;
+}
+
+/* Nombre de la empresa + marca de actual, en la misma línea */
+.job-org {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+/* Marca del puesto actual */
+.job .now {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 .job h3 {
     font-size: 1.15rem;

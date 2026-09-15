@@ -1,7 +1,8 @@
 import { FaGithub, FaLinkedin, FaXTwitter, FaItchIo } from "react-icons/fa6"
 import foto from "../assets/foto.jpg"
 import Reveal from "./Reveal"
-import { ArrowRight, Mail } from "./Icons"
+import { Download } from "./Icons"
+import { contact } from "../data/contact"
 
 // --sc es el color del glow al hacer hover, uno por marca.
 const SOCIALS = [
@@ -31,17 +32,13 @@ function Hero() {
                         teamwork, good design &amp; dinosaurs.
                     </p>
 
-                    <div className="cta-row">
-                        <a className="btn btn-primary" href="#talk">
-                            <Mail />
-                            Hire me
-                        </a>
-                        <a className="btn" href="#work">
-                            See projects <ArrowRight />
-                        </a>
-                    </div>
-
                     <div className="socials">
+                        {contact.cv && (
+                            <a className="soc soc-cv" href={contact.cv} download>
+                                <Download />
+                                Download CV
+                            </a>
+                        )}
                         {SOCIALS.map(({ label, href, Icon, sc }) => (
                             <a
                                 key={label}
@@ -69,6 +66,7 @@ function Hero() {
                     </div>
                 </Reveal>
             </div>
+
         </header>
     )
 }
