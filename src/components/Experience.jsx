@@ -1,5 +1,19 @@
+import { LazyMotion, domAnimation, m } from "motion/react"
 import { experience } from "../data/experience"
-import Reveal from "./Reveal"
+
+const EASE = [0.22, 0.61, 0.36, 1]
+
+// Se usa m directamente en vez de <Reveal stagger>: envolver cada fila
+// rompería .job:last-child y las tres perderían el separador.
+const list = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.08 } },
+}
+
+const row = {
+    hidden: { opacity: 0, y: 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+}
 
 function Experience() {
     return (
@@ -14,20 +28,26 @@ function Experience() {
                     </div>
                 </div>
 
-                <Reveal>
-                    <div className="card jobs">
+                <LazyMotion features={domAnimation} strict>
+                    <m.div
+                        className="card jobs"
+                        variants={list}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                    >
                         {experience.map((job) => (
-                            <div className="job" key={`${job.org}-${job.from}`}>
+                            <m.div className="job" key={`${job.org}-${job.from}`} variants={row}>
                                 <span className="when">
                                     {job.to ? `${job.from} — ${job.to}` : job.from}
                                 </span>
                                 <h3>{job.org}</h3>
                                 <span className="what">{job.role}</span>
                                 {job.detail && <p className="detail">{job.detail}</p>}
-                            </div>
+                            </m.div>
                         ))}
-                    </div>
-                </Reveal>
+                    </m.div>
+                </LazyMotion>
             </div>
         </section>
     )

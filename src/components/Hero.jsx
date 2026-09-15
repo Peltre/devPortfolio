@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin, FaXTwitter, FaItchIo } from "react-icons/fa6"
 import foto from "../assets/foto.jpg"
+import Reveal from "./Reveal"
 import { ArrowRight, Mail } from "./Icons"
 
 // --sc es el color del glow al hacer hover, uno por marca.
@@ -14,7 +15,7 @@ function Hero() {
     return (
         <header className="hero" id="top">
             <div className="card hero-card">
-                <div>
+                <Reveal stagger={0.06}>
                     <div className="pill-live">
                         <i />
                         <span>Available to work</span>
@@ -55,9 +56,9 @@ function Hero() {
                             </a>
                         ))}
                     </div>
-                </div>
+                </Reveal>
 
-                <div className="portrait">
+                <Reveal variant="right" delay={160} className="portrait">
                     <div className="portrait-frame" />
                     <div className="portrait-img">
                         <img src={foto} alt="Pedro Sotelo" />
@@ -66,7 +67,7 @@ function Hero() {
                         <div className="k">Currently learning</div>
                         <div className="v">Unity 3D</div>
                     </div>
-                </div>
+                </Reveal>
             </div>
         </header>
     )

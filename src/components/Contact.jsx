@@ -6,7 +6,7 @@ function Contact() {
     return (
         <section className="section" id="talk">
             <div className="inner">
-                <Reveal>
+                <Reveal variant="scale">
                     <div className="card contact">
                         <p className="eyebrow" style={{ color: "var(--s-talk)" }}>
                             Contact

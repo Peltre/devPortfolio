@@ -136,10 +136,10 @@ function Now() {
                 </div>
 
                 <div className="now-grid">
-                    <Reveal>
+                    <Reveal variant="left">
                         <ShipClock />
                     </Reveal>
-                    <Reveal delay={120}>
+                    <Reveal variant="right" delay={120}>
                         <Spotlight project={featured} onOpen={setSelected} />
                     </Reveal>
                 </div>
